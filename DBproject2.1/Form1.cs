@@ -39,7 +39,9 @@ namespace DBproject2._1
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
+            Customer f1 = new Customer();
+            this.Hide();
+            f1.ShowDialog();
         }
 
         private void Label1_Click_1(object sender, EventArgs e)
@@ -52,6 +54,13 @@ namespace DBproject2._1
             Checkout f2 = new Checkout();
             this.Hide();
             f2.ShowDialog();
+        }
+
+        private void Librarianbutton_Click(object sender, EventArgs e)
+        {
+            Librarian1 f3 = new Librarian1();
+            this.Hide();
+            f3.ShowDialog();
         }
     }
 }

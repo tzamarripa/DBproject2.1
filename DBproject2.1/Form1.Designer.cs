@@ -68,6 +68,7 @@
             this.Librarianbutton.TabIndex = 2;
             this.Librarianbutton.Text = "Librarian";
             this.Librarianbutton.UseVisualStyleBackColor = true;
+            this.Librarianbutton.Click += new System.EventHandler(this.Librarianbutton_Click);
             // 
             // label1
             // 
