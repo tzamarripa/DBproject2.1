@@ -1,4 +1,7 @@
-﻿namespace DBproject2._1
+﻿using System;
+using System.Windows.Forms;
+
+namespace DBproject2._1
 {
     partial class Form1
     {
@@ -80,7 +83,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Please choose interface";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Click += new System.EventHandler(this.Label1_Click_1);
             // 
             // Form1
             // 
