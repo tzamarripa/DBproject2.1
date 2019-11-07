@@ -61,6 +61,51 @@ namespace DBproject2._1.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to alphanumeric characters only.
+        /// </summary>
+        internal static string ALPHANUMERIC_CHARS_ONLY {
+            get {
+                return ResourceManager.GetString("ALPHANUMERIC_CHARS_ONLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Barcode required.
+        /// </summary>
+        internal static string BARCODE_REQUIRED {
+            get {
+                return ResourceManager.GetString("BARCODE_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel checkout.
+        /// </summary>
+        internal static string CHECKOUT_CANCEL_CONFIRMATION_CAPTION {
+            get {
+                return ResourceManager.GetString("CHECKOUT_CANCEL_CONFIRMATION_CAPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to cancel your checkout?.
+        /// </summary>
+        internal static string CHECKOUT_CANCEL_CONFIRMATION_TEXT {
+            get {
+                return ResourceManager.GetString("CHECKOUT_CANCEL_CONFIRMATION_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checkout for {0}.
+        /// </summary>
+        internal static string CHECKOUT_MEMBER_HEADER {
+            get {
+                return ResourceManager.GetString("CHECKOUT_MEMBER_HEADER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Member ID must be numeric.
         /// </summary>
         internal static string MEMBER_ID_REQUIRED_NUMERIC {

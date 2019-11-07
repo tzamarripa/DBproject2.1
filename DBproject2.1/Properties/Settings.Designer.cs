@@ -32,5 +32,14 @@ namespace DBproject2._1.Properties {
                 return ((string)(this["DB_CONNECTION"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int DEFAULT_CHECKOUT_DAYS {
+            get {
+                return ((int)(this["DEFAULT_CHECKOUT_DAYS"]));
+            }
+        }
     }
 }
