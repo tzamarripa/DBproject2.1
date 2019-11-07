@@ -27,7 +27,7 @@ namespace DBproject2._1
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Customer f1 = new Customer();
+            MemberView f1 = new MemberView();
             this.Hide();
             f1.ShowDialog();
         }
