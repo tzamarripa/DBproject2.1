@@ -29,22 +29,24 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblAuthor = new System.Windows.Forms.Label();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.txtAuthor = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupSearchInput = new System.Windows.Forms.GroupBox();
             this.groupSearchResults = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupSelectionDetails = new System.Windows.Forms.GroupBox();
             this.groupButtonsNoLogin = new System.Windows.Forms.GroupBox();
-            this.groupButtonLoggedIn = new System.Windows.Forms.GroupBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.btnCheckoutHistory = new System.Windows.Forms.Button();
-            this.btnCurrentCheckouts = new System.Windows.Forms.Button();
+            this.groupButtonLoggedIn = new System.Windows.Forms.GroupBox();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnCurrentCheckouts = new System.Windows.Forms.Button();
+            this.btnCheckoutHistory = new System.Windows.Forms.Button();
+            this.lblSearchError = new System.Windows.Forms.Label();
+            this.groupMemberInfo = new System.Windows.Forms.GroupBox();
             this.groupSearchInput.SuspendLayout();
             this.groupSearchResults.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -56,97 +58,99 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 18);
+            this.label1.Location = new System.Drawing.Point(16, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Search for books";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
-            // label2
+            // lblTitle
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(33, 62);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Title:";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(91, 38);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(61, 25);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "Title:";
             // 
-            // label3
+            // lblAuthor
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 88);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Author:";
-            this.label3.Click += new System.EventHandler(this.Label3_Click);
+            this.lblAuthor.AutoSize = true;
+            this.lblAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAuthor.Location = new System.Drawing.Point(69, 79);
+            this.lblAuthor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Size = new System.Drawing.Size(83, 25);
+            this.lblAuthor.TabIndex = 2;
+            this.lblAuthor.Text = "Author:";
             // 
-            // textBox1
+            // txtTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(102, 53);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(292, 22);
-            this.textBox1.TabIndex = 3;
+            this.txtTitle.Location = new System.Drawing.Point(186, 42);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(522, 22);
+            this.txtTitle.TabIndex = 3;
             // 
-            // textBox2
+            // txtAuthor
             // 
-            this.textBox2.Location = new System.Drawing.Point(102, 84);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(292, 22);
-            this.textBox2.TabIndex = 4;
+            this.txtAuthor.Location = new System.Drawing.Point(186, 83);
+            this.txtAuthor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.Size = new System.Drawing.Size(522, 22);
+            this.txtAuthor.TabIndex = 4;
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.Location = new System.Drawing.Point(402, 49);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(716, 22);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(162, 54);
+            this.btnSearch.TabIndex = 5;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // button2
+            // btnClear
             // 
-            this.button2.Location = new System.Drawing.Point(402, 81);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnClear.Location = new System.Drawing.Point(716, 76);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(162, 61);
+            this.btnClear.TabIndex = 6;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // groupSearchInput
             // 
-            this.groupSearchInput.Controls.Add(this.label3);
+            this.groupSearchInput.Controls.Add(this.lblSearchError);
+            this.groupSearchInput.Controls.Add(this.lblAuthor);
             this.groupSearchInput.Controls.Add(this.label1);
-            this.groupSearchInput.Controls.Add(this.button2);
-            this.groupSearchInput.Controls.Add(this.label2);
-            this.groupSearchInput.Controls.Add(this.button1);
-            this.groupSearchInput.Controls.Add(this.textBox1);
-            this.groupSearchInput.Controls.Add(this.textBox2);
-            this.groupSearchInput.Location = new System.Drawing.Point(231, 35);
+            this.groupSearchInput.Controls.Add(this.btnClear);
+            this.groupSearchInput.Controls.Add(this.lblTitle);
+            this.groupSearchInput.Controls.Add(this.btnSearch);
+            this.groupSearchInput.Controls.Add(this.txtTitle);
+            this.groupSearchInput.Controls.Add(this.txtAuthor);
+            this.groupSearchInput.Location = new System.Drawing.Point(564, 36);
             this.groupSearchInput.Name = "groupSearchInput";
-            this.groupSearchInput.Size = new System.Drawing.Size(511, 125);
+            this.groupSearchInput.Size = new System.Drawing.Size(878, 138);
             this.groupSearchInput.TabIndex = 7;
             this.groupSearchInput.TabStop = false;
             // 
             // groupSearchResults
             // 
             this.groupSearchResults.Controls.Add(this.dataGridView1);
-            this.groupSearchResults.Location = new System.Drawing.Point(231, 166);
+            this.groupSearchResults.Location = new System.Drawing.Point(564, 180);
             this.groupSearchResults.Name = "groupSearchResults";
-            this.groupSearchResults.Size = new System.Drawing.Size(511, 255);
+            this.groupSearchResults.Size = new System.Drawing.Size(878, 403);
             this.groupSearchResults.TabIndex = 8;
             this.groupSearchResults.TabStop = false;
             this.groupSearchResults.Text = "Search Results: 0";
+            this.groupSearchResults.Visible = false;
             // 
             // dataGridView1
             // 
@@ -158,79 +162,106 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(511, 234);
+            this.dataGridView1.Size = new System.Drawing.Size(878, 382);
             this.dataGridView1.TabIndex = 1;
             // 
             // groupSelectionDetails
             // 
-            this.groupSelectionDetails.Location = new System.Drawing.Point(231, 438);
+            this.groupSelectionDetails.Location = new System.Drawing.Point(564, 603);
             this.groupSelectionDetails.Name = "groupSelectionDetails";
-            this.groupSelectionDetails.Size = new System.Drawing.Size(511, 104);
+            this.groupSelectionDetails.Size = new System.Drawing.Size(878, 169);
             this.groupSelectionDetails.TabIndex = 9;
             this.groupSelectionDetails.TabStop = false;
             this.groupSelectionDetails.Text = "Details";
+            this.groupSelectionDetails.Visible = false;
             // 
             // groupButtonsNoLogin
             // 
             this.groupButtonsNoLogin.Controls.Add(this.btnLogin);
-            this.groupButtonsNoLogin.Location = new System.Drawing.Point(12, 35);
+            this.groupButtonsNoLogin.Location = new System.Drawing.Point(21, 36);
             this.groupButtonsNoLogin.Name = "groupButtonsNoLogin";
-            this.groupButtonsNoLogin.Size = new System.Drawing.Size(136, 34);
+            this.groupButtonsNoLogin.Size = new System.Drawing.Size(224, 64);
             this.groupButtonsNoLogin.TabIndex = 10;
             this.groupButtonsNoLogin.TabStop = false;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(0, 4);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(224, 54);
+            this.btnLogin.TabIndex = 0;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
             // 
             // groupButtonLoggedIn
             // 
             this.groupButtonLoggedIn.Controls.Add(this.btnLogout);
             this.groupButtonLoggedIn.Controls.Add(this.btnCurrentCheckouts);
             this.groupButtonLoggedIn.Controls.Add(this.btnCheckoutHistory);
-            this.groupButtonLoggedIn.Location = new System.Drawing.Point(12, 67);
+            this.groupButtonLoggedIn.Location = new System.Drawing.Point(21, 112);
             this.groupButtonLoggedIn.Name = "groupButtonLoggedIn";
-            this.groupButtonLoggedIn.Size = new System.Drawing.Size(136, 107);
+            this.groupButtonLoggedIn.Size = new System.Drawing.Size(224, 156);
             this.groupButtonLoggedIn.TabIndex = 11;
             this.groupButtonLoggedIn.TabStop = false;
+            this.groupButtonLoggedIn.Visible = false;
             // 
-            // btnLogin
+            // btnLogout
             // 
-            this.btnLogin.Location = new System.Drawing.Point(0, 10);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(136, 23);
-            this.btnLogin.TabIndex = 0;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            // 
-            // btnCheckoutHistory
-            // 
-            this.btnCheckoutHistory.Location = new System.Drawing.Point(0, 6);
-            this.btnCheckoutHistory.Name = "btnCheckoutHistory";
-            this.btnCheckoutHistory.Size = new System.Drawing.Size(136, 23);
-            this.btnCheckoutHistory.TabIndex = 1;
-            this.btnCheckoutHistory.Text = "Checkout History";
-            this.btnCheckoutHistory.UseVisualStyleBackColor = true;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(0, 111);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(224, 39);
+            this.btnLogout.TabIndex = 3;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnCurrentCheckouts
             // 
-            this.btnCurrentCheckouts.Location = new System.Drawing.Point(0, 31);
+            this.btnCurrentCheckouts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCurrentCheckouts.Location = new System.Drawing.Point(0, 53);
             this.btnCurrentCheckouts.Name = "btnCurrentCheckouts";
-            this.btnCurrentCheckouts.Size = new System.Drawing.Size(136, 23);
+            this.btnCurrentCheckouts.Size = new System.Drawing.Size(224, 37);
             this.btnCurrentCheckouts.TabIndex = 2;
             this.btnCurrentCheckouts.Text = "Current Checkouts";
             this.btnCurrentCheckouts.UseVisualStyleBackColor = true;
             // 
-            // btnLogout
+            // btnCheckoutHistory
             // 
-            this.btnLogout.Location = new System.Drawing.Point(0, 76);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(136, 23);
-            this.btnLogout.TabIndex = 3;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnCheckoutHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckoutHistory.Location = new System.Drawing.Point(0, 6);
+            this.btnCheckoutHistory.Name = "btnCheckoutHistory";
+            this.btnCheckoutHistory.Size = new System.Drawing.Size(224, 41);
+            this.btnCheckoutHistory.TabIndex = 1;
+            this.btnCheckoutHistory.Text = "Checkout History";
+            this.btnCheckoutHistory.UseVisualStyleBackColor = true;
+            // 
+            // lblSearchError
+            // 
+            this.lblSearchError.AutoSize = true;
+            this.lblSearchError.ForeColor = System.Drawing.Color.Red;
+            this.lblSearchError.Location = new System.Drawing.Point(186, 113);
+            this.lblSearchError.Name = "lblSearchError";
+            this.lblSearchError.Size = new System.Drawing.Size(0, 17);
+            this.lblSearchError.TabIndex = 7;
+            // 
+            // groupMemberInfo
+            // 
+            this.groupMemberInfo.Location = new System.Drawing.Point(1503, 40);
+            this.groupMemberInfo.Name = "groupMemberInfo";
+            this.groupMemberInfo.Size = new System.Drawing.Size(266, 172);
+            this.groupMemberInfo.TabIndex = 12;
+            this.groupMemberInfo.TabStop = false;
+            this.groupMemberInfo.Text = "Member Info";
+            this.groupMemberInfo.Visible = false;
             // 
             // MemberView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1821, 769);
+            this.Controls.Add(this.groupMemberInfo);
             this.Controls.Add(this.groupButtonLoggedIn);
             this.Controls.Add(this.groupButtonsNoLogin);
             this.Controls.Add(this.groupSelectionDetails);
@@ -239,8 +270,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MemberView";
             this.Text = "Member view";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Customer_FormClosed);
-            this.Load += new System.EventHandler(this.Customer_Load);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MemberView_FormClosed);
+            this.Load += new System.EventHandler(this.MemberView_Load);
             this.groupSearchInput.ResumeLayout(false);
             this.groupSearchInput.PerformLayout();
             this.groupSearchResults.ResumeLayout(false);
@@ -254,12 +286,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblAuthor;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.TextBox txtAuthor;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox groupSearchInput;
         private System.Windows.Forms.GroupBox groupSearchResults;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -270,5 +302,7 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnCurrentCheckouts;
         private System.Windows.Forms.Button btnCheckoutHistory;
+        private System.Windows.Forms.Label lblSearchError;
+        private System.Windows.Forms.GroupBox groupMemberInfo;
     }
 }
