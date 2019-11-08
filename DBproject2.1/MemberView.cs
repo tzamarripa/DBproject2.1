@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,12 @@ namespace DBproject2._1
 {
     public partial class MemberView : Form
     {
+        public SqlConnection DbConnection { get; set; }
+        
         //details held when a member logs in
         private MemberDetails memberDetails;
+
+        private DataTable searchResults;
 
         public MemberView()
         {
@@ -22,7 +27,37 @@ namespace DBproject2._1
 
         private void MemberView_Load(object sender, EventArgs e)
         {
+            searchResults = new DataTable();
 
+            searchResults.Columns.Add("Title");
+            searchResults.Columns.Add("Author");
+            searchResults.Columns.Add("PublishDate");
+            searchResults.Columns.Add("ISBN");
+
+            gridSearchResults.DataSource = searchResults;
+
+            gridSearchResults.CellDoubleClick += GridSearchResults_CellDoubleClick;
+        }
+
+        private void GridSearchResults_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string isbn = GetIsbnOfSelectedRow(e.RowIndex);
+            PopulateDetails(isbn);
+        }
+
+        private string GetIsbnOfSelectedRow(int rowIndex)
+        {
+            var row = gridSearchResults.Rows[rowIndex];
+            var cell = row.Cells[3];
+            return (string)cell.Value;
+        }
+
+        private void PopulateDetails(string isbn)
+        {
+            //var details = GetDetailsByISBN(isbn);
+            //UpdateDetails(details);
+
+            groupSelectionDetails.Show();
         }
 
         private void MemberView_FormClosed(object sender, FormClosedEventArgs e)
@@ -46,6 +81,7 @@ namespace DBproject2._1
         private void ClearSearchOutputs()
         {
             lblSearchError.Text = "";
+            searchResults.Rows.Clear();
         }
 
         private void ClearSearchInputs()
@@ -56,36 +92,81 @@ namespace DBproject2._1
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            ClearSearchOutputs();
+
             SearchRequest req = new SearchRequest { Title = txtTitle.Text.Trim(), Author = txtAuthor.Text.Trim() };
 
             if(IsEmptySearch(req))
             {
                 NotifySearchError("Title or Author is required");
+            } else if(IsSearchTooShort(req))
+            {
+                string message = string.Format("At least {0} characters are required", Properties.Settings.Default.MEMBER_MIN_BOOK_SEARCH_CHARS);
+                NotifySearchError(message);
             }
             else
             {
                 var results = SearchForBooks(req);
 
-                PopulateSearchResults();
+                PopulateSearchResults(results);
             }
         }
 
-        private void PopulateSearchResults()
+        private bool IsSearchTooShort(SearchRequest req)
         {
-            //TODO: place the list in the DataSource
+            int minChars = Properties.Settings.Default.MEMBER_MIN_BOOK_SEARCH_CHARS;
+            return (req.Title.Length < minChars && req.Author.Length < 3);
+        }
 
-            groupSearchResults.Text = string.Format("Search Results: {0}", 0);
+        private void PopulateSearchResults(List<SearchResult> results)
+        {
+            foreach(var result in results)
+            {
+                searchResults.Rows.Add(result.Title, result.Author, result.PublishDate.ToString("MMM dd, yyyy"), result.ISBN);
+            }
+
+            groupSearchResults.Text = string.Format("Search Results: {0}", results.Count);
 
             groupSearchResults.Show();
             groupSelectionDetails.Hide();
         }
 
-        private object SearchForBooks(SearchRequest req)
+        private List<SearchResult> SearchForBooks(SearchRequest req)
         {
-            throw new NotImplementedException();
+            var cmd = DbConnection.CreateCommand();
 
-            //title, author, isbn, barcode, quantity total, quantity available
-            //inventory, book, checkout_item
+            cmd.CommandText = "select title, author_fname, author_lname, PublishDate, ISBN from book where 1 = 1 ";
+
+            if(req.Title.Length > 0)
+            {
+                cmd.CommandText += " and upper(Title) like @title ";
+                cmd.Parameters.AddWithValue("title", "%" + req.Title.ToUpper() + "%");
+            }
+
+            if(req.Author.Length > 0)
+            {
+                cmd.CommandText += " and(upper(Author_Fname) like @author or upper(Author_Lname) like @author)";
+                cmd.Parameters.AddWithValue("author", "%" + req.Author.ToUpper() + "%");
+            }
+
+            List<SearchResult> results = new List<SearchResult>();
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    results.Add(new SearchResult()
+                    {
+                        Title = reader.GetString(0),
+                        AuthorFirstname = reader.GetString(1),
+                        AuthorLastname = reader.GetString(2),
+                        PublishDate = reader.GetDateTime(3),
+                        ISBN = reader.GetString(4)
+                    });
+                }
+            }
+
+            return results;
         }
 
         private void NotifySearchError(string message)
@@ -122,12 +203,12 @@ namespace DBproject2._1
 
         class SearchResult
         {
-            string Title;
-            string Author;
-            string Isbn;
-            string Barcode;
-            int QuantityTotal;
-            int QuantityAvailable;
+            internal string Title { get; set; }
+            internal string AuthorFirstname { get; set; }
+            internal string AuthorLastname { get; set; }
+            internal string Author { get => string.Format("{0}, {1}", AuthorLastname, AuthorFirstname); }
+            internal DateTime PublishDate { get; set; }
+            internal string ISBN { get; set; }
         }
     }
 }

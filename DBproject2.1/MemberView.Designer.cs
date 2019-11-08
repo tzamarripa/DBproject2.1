@@ -37,7 +37,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.groupSearchInput = new System.Windows.Forms.GroupBox();
             this.groupSearchResults = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridSearchResults = new System.Windows.Forms.DataGridView();
             this.groupSelectionDetails = new System.Windows.Forms.GroupBox();
             this.groupButtonsNoLogin = new System.Windows.Forms.GroupBox();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@
             this.groupMemberInfo = new System.Windows.Forms.GroupBox();
             this.groupSearchInput.SuspendLayout();
             this.groupSearchResults.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSearchResults)).BeginInit();
             this.groupButtonsNoLogin.SuspendLayout();
             this.groupButtonLoggedIn.SuspendLayout();
             this.SuspendLayout();
@@ -143,7 +143,7 @@
             // 
             // groupSearchResults
             // 
-            this.groupSearchResults.Controls.Add(this.dataGridView1);
+            this.groupSearchResults.Controls.Add(this.gridSearchResults);
             this.groupSearchResults.Location = new System.Drawing.Point(564, 180);
             this.groupSearchResults.Name = "groupSearchResults";
             this.groupSearchResults.Size = new System.Drawing.Size(878, 403);
@@ -152,18 +152,22 @@
             this.groupSearchResults.Text = "Search Results: 0";
             this.groupSearchResults.Visible = false;
             // 
-            // dataGridView1
+            // gridSearchResults
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 21);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(878, 382);
-            this.dataGridView1.TabIndex = 1;
+            this.gridSearchResults.AllowUserToAddRows = false;
+            this.gridSearchResults.AllowUserToDeleteRows = false;
+            this.gridSearchResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridSearchResults.CausesValidation = false;
+            this.gridSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridSearchResults.Location = new System.Drawing.Point(0, 21);
+            this.gridSearchResults.MultiSelect = false;
+            this.gridSearchResults.Name = "gridSearchResults";
+            this.gridSearchResults.ReadOnly = true;
+            this.gridSearchResults.RowHeadersWidth = 51;
+            this.gridSearchResults.RowTemplate.Height = 24;
+            this.gridSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridSearchResults.Size = new System.Drawing.Size(878, 382);
+            this.gridSearchResults.TabIndex = 1;
             // 
             // groupSelectionDetails
             // 
@@ -276,7 +280,7 @@
             this.groupSearchInput.ResumeLayout(false);
             this.groupSearchInput.PerformLayout();
             this.groupSearchResults.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSearchResults)).EndInit();
             this.groupButtonsNoLogin.ResumeLayout(false);
             this.groupButtonLoggedIn.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -294,7 +298,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.GroupBox groupSearchInput;
         private System.Windows.Forms.GroupBox groupSearchResults;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridSearchResults;
         private System.Windows.Forms.GroupBox groupSelectionDetails;
         private System.Windows.Forms.GroupBox groupButtonsNoLogin;
         private System.Windows.Forms.GroupBox groupButtonLoggedIn;

@@ -41,5 +41,14 @@ namespace DBproject2._1.Properties {
                 return ((int)(this["DEFAULT_CHECKOUT_DAYS"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int MEMBER_MIN_BOOK_SEARCH_CHARS {
+            get {
+                return ((int)(this["MEMBER_MIN_BOOK_SEARCH_CHARS"]));
+            }
+        }
     }
 }

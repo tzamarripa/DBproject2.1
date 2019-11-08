@@ -28,6 +28,7 @@ namespace DBproject2._1
         private void Button1_Click(object sender, EventArgs e)
         {
             MemberView f1 = new MemberView();
+            f1.DbConnection = DbConnection;
             this.Hide();
             f1.ShowDialog();
         }
