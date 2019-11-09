@@ -1,5 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,7 +20,10 @@ namespace DBproject2._1
         //details held when a member logs in
         private MemberDetails memberDetails;
 
-        private DataTable searchResults;
+        //results of a book search
+        private ObservableCollection<SearchResult> searchResults;
+        //reads changes to the book search to display them to the user
+        private DataTable searchResultsDataTable;
 
         public MemberView()
         {
@@ -27,44 +32,100 @@ namespace DBproject2._1
 
         private void MemberView_Load(object sender, EventArgs e)
         {
-            searchResults = new DataTable();
+            searchResults = new ObservableCollection<SearchResult>();
+            searchResults.CollectionChanged += OnSearchResultsListChanged;
 
-            searchResults.Columns.Add("Title");
-            searchResults.Columns.Add("Author");
-            searchResults.Columns.Add("PublishDate");
-            searchResults.Columns.Add("ISBN");
+            searchResultsDataTable = new DataTable();
+            //field to display within the grid
+            searchResultsDataTable.Columns.Add("Title");
+            searchResultsDataTable.Columns.Add("Author");
+            searchResultsDataTable.Columns.Add("PublishDate");
+            searchResultsDataTable.Columns.Add("ISBN");
 
-            gridSearchResults.DataSource = searchResults;
+            gridSearchResults.DataSource = searchResultsDataTable;
 
             gridSearchResults.CellDoubleClick += GridSearchResults_CellDoubleClick;
         }
 
+        private void OnSearchResultsListChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            //for every book added, display it in the grid
+            if(e.Action == NotifyCollectionChangedAction.Add)
+            {
+                foreach (var item in e.NewItems)
+                {
+                    var result = (SearchResult)item;
+                    searchResultsDataTable.Rows.Add(result.Title, result.Author, result.PublishDate, result.ISBN);
+                }
+            } else if (e.Action == NotifyCollectionChangedAction.Reset)
+            {
+                //user cleared the search results, so clear the grid
+                searchResultsDataTable.Rows.Clear();
+            }
+
+            UpdateSearchResultsCountHeader();
+        }
+        /// <summary>
+        /// Listener for when a user double-clicks a cell within the search result grid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GridSearchResults_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string isbn = GetIsbnOfSelectedRow(e.RowIndex);
-            PopulateDetails(isbn);
+            if(e.RowIndex >= 0)
+            {
+                PopulateDetailsSection(searchResults[e.RowIndex]);
+            }
         }
-
-        private string GetIsbnOfSelectedRow(int rowIndex)
+        /// <summary>
+        /// For the specified book, populate the Details section and ensure it is visible.
+        /// </summary>
+        /// <param name="item"></param>
+        private void PopulateDetailsSection(SearchResult item)
         {
-            var row = gridSearchResults.Rows[rowIndex];
-            var cell = row.Cells[3];
-            return (string)cell.Value;
-        }
-
-        private void PopulateDetails(string isbn)
-        {
-            //var details = GetDetailsByISBN(isbn);
-            //UpdateDetails(details);
+            int checkedOutCount = GetCheckoutCountForItem(item);
+            UpdateDetailsText(item, checkedOutCount);
 
             groupSelectionDetails.Show();
+        }
+        /// <summary>
+        /// Query the DB to determine how many of the specified book are currently checked out.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        private int GetCheckoutCountForItem(SearchResult item)
+        {
+            var cmd = DbConnection.CreateCommand();
+            cmd.CommandText = "select count(*) from checkout_item where InventoryID = @barcode and ReturnedDate is null";
+            cmd.Parameters.AddWithValue("barcode", item.Barcode);
+
+            return (int)cmd.ExecuteScalar();
+
+        }
+        /// <summary>
+        /// Populate the text fields within the Details section.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="checkedOutCount"></param>
+        private void UpdateDetailsText(SearchResult item, int checkedOutCount)
+        {
+            txtDetailsTitle.Text = item.Title;
+            txtDetailsAuthor.Text = item.Author;
+            txtDetailsIsbn.Text = item.ISBN;
+            txtDetailsPublishDate.Text = item.PublishDate;
+            txtDetailsAvailable.Text = (item.Quantity - checkedOutCount).ToString();
+            txtDetailsQuantity.Text = item.Quantity.ToString();
         }
 
         private void MemberView_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
+        /// <summary>
+        /// User clicked the Clear button, so clear all items related to search.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearSearchInputs();
@@ -81,7 +142,7 @@ namespace DBproject2._1
         private void ClearSearchOutputs()
         {
             lblSearchError.Text = "";
-            searchResults.Rows.Clear();
+            searchResults.Clear();
         }
 
         private void ClearSearchInputs()
@@ -89,7 +150,11 @@ namespace DBproject2._1
             txtTitle.Text = "";
             txtAuthor.Text = "";
         }
-
+        /// <summary>
+        /// User clicked the Search button, so query the DB for matching books.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             ClearSearchOutputs();
@@ -106,10 +171,18 @@ namespace DBproject2._1
             }
             else
             {
-                var results = SearchForBooks(req);
+                SearchForBooks(req);
 
-                PopulateSearchResults(results);
+                UpdateSearchResultsCountHeader();
+
+                groupSearchResults.Show();
+                groupSelectionDetails.Hide();
             }
+        }
+
+        private void UpdateSearchResultsCountHeader()
+        {
+            groupSearchResults.Text = string.Format("Search Results: {0}", searchResults.Count);
         }
 
         private bool IsSearchTooShort(SearchRequest req)
@@ -117,25 +190,16 @@ namespace DBproject2._1
             int minChars = Properties.Settings.Default.MEMBER_MIN_BOOK_SEARCH_CHARS;
             return (req.Title.Length < minChars && req.Author.Length < 3);
         }
-
-        private void PopulateSearchResults(List<SearchResult> results)
-        {
-            foreach(var result in results)
-            {
-                searchResults.Rows.Add(result.Title, result.Author, result.PublishDate.ToString("MMM dd, yyyy"), result.ISBN);
-            }
-
-            groupSearchResults.Text = string.Format("Search Results: {0}", results.Count);
-
-            groupSearchResults.Show();
-            groupSelectionDetails.Hide();
-        }
-
-        private List<SearchResult> SearchForBooks(SearchRequest req)
+        /// <summary>
+        /// Query the DB for books matching the specified terms. Caller is expected to pre-validate that at least one term is populated.
+        /// </summary>
+        /// <param name="req"></param>
+        private void SearchForBooks(SearchRequest req)
         {
             var cmd = DbConnection.CreateCommand();
 
-            cmd.CommandText = "select title, author_fname, author_lname, PublishDate, ISBN from book where 1 = 1 ";
+            cmd.CommandText = "select title, author_fname, author_lname, PublishDate, ISBN, i.Barcode, i.Quantity " +
+                                "from book join inventory i on i.BookID = ISBN where 1 = 1 ";
 
             if(req.Title.Length > 0)
             {
@@ -149,31 +213,35 @@ namespace DBproject2._1
                 cmd.Parameters.AddWithValue("author", "%" + req.Author.ToUpper() + "%");
             }
 
-            List<SearchResult> results = new List<SearchResult>();
-
             using (var reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    results.Add(new SearchResult()
+                    var item = new SearchResult()
                     {
                         Title = reader.GetString(0),
                         AuthorFirstname = reader.GetString(1),
                         AuthorLastname = reader.GetString(2),
-                        PublishDate = reader.GetDateTime(3),
-                        ISBN = reader.GetString(4)
-                    });
+                        PublishDate = reader.GetDateTime(3).ToString("MMM dd, yyyy"),
+                        ISBN = reader.GetString(4),
+                        Barcode = reader.GetString(5),
+                        Quantity = reader.GetInt32(6)
+                    };
+                    //this will fire the collection changed event
+                    searchResults.Add(item);
                 }
             }
-
-            return results;
         }
 
         private void NotifySearchError(string message)
         {
             lblSearchError.Text = message;
         }
-
+        /// <summary>
+        /// Checks if the user left the search inputs empty.
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns></returns>
         private bool IsEmptySearch(SearchRequest req)
         {
             return string.IsNullOrEmpty(req.Title) && string.IsNullOrEmpty(req.Author);
@@ -186,13 +254,17 @@ namespace DBproject2._1
             groupButtonLoggedIn.Hide();
             groupMemberInfo.Hide();
         }
-
+        /// <summary>
+        /// Represents a search request generated by the user.
+        /// </summary>
         class SearchRequest
         {
             internal String Title { get; set; }
             internal String Author { get; set; }
         }
-
+        /// <summary>
+        /// Represents a member that can log into the view.
+        /// </summary>
         class MemberDetails
         {
             internal String MemberId { get; set; }
@@ -200,15 +272,19 @@ namespace DBproject2._1
             internal String Lastname { get; set; }
             internal DateTime JoinDate { get; set; }
         }
-
+        /// <summary>
+        /// Represents a book that matched the user's search term(s).
+        /// </summary>
         class SearchResult
         {
             internal string Title { get; set; }
             internal string AuthorFirstname { get; set; }
             internal string AuthorLastname { get; set; }
             internal string Author { get => string.Format("{0}, {1}", AuthorLastname, AuthorFirstname); }
-            internal DateTime PublishDate { get; set; }
+            internal string PublishDate { get; set; }
             internal string ISBN { get; set; }
+            internal string Barcode { get; set; }
+            internal int Quantity { get; set; }
         }
     }
 }
