@@ -40,6 +40,18 @@
             this.groupSearchResults = new System.Windows.Forms.GroupBox();
             this.gridSearchResults = new System.Windows.Forms.DataGridView();
             this.groupSelectionDetails = new System.Windows.Forms.GroupBox();
+            this.txtDetailsQuantity = new System.Windows.Forms.TextBox();
+            this.txtDetailsAvailable = new System.Windows.Forms.TextBox();
+            this.txtDetailsPublishDate = new System.Windows.Forms.TextBox();
+            this.txtDetailsIsbn = new System.Windows.Forms.TextBox();
+            this.txtDetailsAuthor = new System.Windows.Forms.TextBox();
+            this.txtDetailsTitle = new System.Windows.Forms.TextBox();
+            this.lblDetailsQuantity = new System.Windows.Forms.Label();
+            this.lblDetailsAvailable = new System.Windows.Forms.Label();
+            this.lblDetailsPublishDate = new System.Windows.Forms.Label();
+            this.lblDetailsIsbn = new System.Windows.Forms.Label();
+            this.lblDetailsAuthor = new System.Windows.Forms.Label();
+            this.lblDetailsTitle = new System.Windows.Forms.Label();
             this.groupButtonsNoLogin = new System.Windows.Forms.GroupBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.groupButtonLoggedIn = new System.Windows.Forms.GroupBox();
@@ -47,18 +59,6 @@
             this.btnCurrentCheckouts = new System.Windows.Forms.Button();
             this.btnCheckoutHistory = new System.Windows.Forms.Button();
             this.groupMemberInfo = new System.Windows.Forms.GroupBox();
-            this.lblDetailsTitle = new System.Windows.Forms.Label();
-            this.lblDetailsAuthor = new System.Windows.Forms.Label();
-            this.lblDetailsIsbn = new System.Windows.Forms.Label();
-            this.lblDetailsPublishDate = new System.Windows.Forms.Label();
-            this.lblDetailsAvailable = new System.Windows.Forms.Label();
-            this.lblDetailsQuantity = new System.Windows.Forms.Label();
-            this.txtDetailsTitle = new System.Windows.Forms.TextBox();
-            this.txtDetailsAuthor = new System.Windows.Forms.TextBox();
-            this.txtDetailsIsbn = new System.Windows.Forms.TextBox();
-            this.txtDetailsPublishDate = new System.Windows.Forms.TextBox();
-            this.txtDetailsAvailable = new System.Windows.Forms.TextBox();
-            this.txtDetailsQuantity = new System.Windows.Forms.TextBox();
             this.groupSearchInput.SuspendLayout();
             this.groupSearchResults.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSearchResults)).BeginInit();
@@ -213,6 +213,114 @@
             this.groupSelectionDetails.Text = "Details";
             this.groupSelectionDetails.Visible = false;
             // 
+            // txtDetailsQuantity
+            // 
+            this.txtDetailsQuantity.Enabled = false;
+            this.txtDetailsQuantity.Location = new System.Drawing.Point(753, 114);
+            this.txtDetailsQuantity.Name = "txtDetailsQuantity";
+            this.txtDetailsQuantity.Size = new System.Drawing.Size(106, 22);
+            this.txtDetailsQuantity.TabIndex = 11;
+            // 
+            // txtDetailsAvailable
+            // 
+            this.txtDetailsAvailable.Enabled = false;
+            this.txtDetailsAvailable.Location = new System.Drawing.Point(753, 72);
+            this.txtDetailsAvailable.Name = "txtDetailsAvailable";
+            this.txtDetailsAvailable.Size = new System.Drawing.Size(106, 22);
+            this.txtDetailsAvailable.TabIndex = 10;
+            // 
+            // txtDetailsPublishDate
+            // 
+            this.txtDetailsPublishDate.Enabled = false;
+            this.txtDetailsPublishDate.Location = new System.Drawing.Point(753, 29);
+            this.txtDetailsPublishDate.Name = "txtDetailsPublishDate";
+            this.txtDetailsPublishDate.Size = new System.Drawing.Size(106, 22);
+            this.txtDetailsPublishDate.TabIndex = 9;
+            // 
+            // txtDetailsIsbn
+            // 
+            this.txtDetailsIsbn.Enabled = false;
+            this.txtDetailsIsbn.Location = new System.Drawing.Point(100, 107);
+            this.txtDetailsIsbn.Name = "txtDetailsIsbn";
+            this.txtDetailsIsbn.Size = new System.Drawing.Size(469, 22);
+            this.txtDetailsIsbn.TabIndex = 8;
+            // 
+            // txtDetailsAuthor
+            // 
+            this.txtDetailsAuthor.Enabled = false;
+            this.txtDetailsAuthor.Location = new System.Drawing.Point(100, 72);
+            this.txtDetailsAuthor.Name = "txtDetailsAuthor";
+            this.txtDetailsAuthor.Size = new System.Drawing.Size(469, 22);
+            this.txtDetailsAuthor.TabIndex = 7;
+            // 
+            // txtDetailsTitle
+            // 
+            this.txtDetailsTitle.Enabled = false;
+            this.txtDetailsTitle.Location = new System.Drawing.Point(100, 29);
+            this.txtDetailsTitle.Name = "txtDetailsTitle";
+            this.txtDetailsTitle.Size = new System.Drawing.Size(469, 22);
+            this.txtDetailsTitle.TabIndex = 6;
+            // 
+            // lblDetailsQuantity
+            // 
+            this.lblDetailsQuantity.AutoSize = true;
+            this.lblDetailsQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailsQuantity.Location = new System.Drawing.Point(641, 107);
+            this.lblDetailsQuantity.Name = "lblDetailsQuantity";
+            this.lblDetailsQuantity.Size = new System.Drawing.Size(106, 29);
+            this.lblDetailsQuantity.TabIndex = 5;
+            this.lblDetailsQuantity.Text = "Quantity:";
+            // 
+            // lblDetailsAvailable
+            // 
+            this.lblDetailsAvailable.AutoSize = true;
+            this.lblDetailsAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailsAvailable.Location = new System.Drawing.Point(630, 65);
+            this.lblDetailsAvailable.Name = "lblDetailsAvailable";
+            this.lblDetailsAvailable.Size = new System.Drawing.Size(117, 29);
+            this.lblDetailsAvailable.TabIndex = 4;
+            this.lblDetailsAvailable.Text = "Available:";
+            // 
+            // lblDetailsPublishDate
+            // 
+            this.lblDetailsPublishDate.AutoSize = true;
+            this.lblDetailsPublishDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailsPublishDate.Location = new System.Drawing.Point(592, 22);
+            this.lblDetailsPublishDate.Name = "lblDetailsPublishDate";
+            this.lblDetailsPublishDate.Size = new System.Drawing.Size(155, 29);
+            this.lblDetailsPublishDate.TabIndex = 3;
+            this.lblDetailsPublishDate.Text = "Publish Date:";
+            // 
+            // lblDetailsIsbn
+            // 
+            this.lblDetailsIsbn.AutoSize = true;
+            this.lblDetailsIsbn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailsIsbn.Location = new System.Drawing.Point(19, 107);
+            this.lblDetailsIsbn.Name = "lblDetailsIsbn";
+            this.lblDetailsIsbn.Size = new System.Drawing.Size(75, 29);
+            this.lblDetailsIsbn.TabIndex = 2;
+            this.lblDetailsIsbn.Text = "ISBN:";
+            // 
+            // lblDetailsAuthor
+            // 
+            this.lblDetailsAuthor.AutoSize = true;
+            this.lblDetailsAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailsAuthor.Location = new System.Drawing.Point(6, 65);
+            this.lblDetailsAuthor.Name = "lblDetailsAuthor";
+            this.lblDetailsAuthor.Size = new System.Drawing.Size(88, 29);
+            this.lblDetailsAuthor.TabIndex = 1;
+            this.lblDetailsAuthor.Text = "Author:";
+            // 
+            // lblDetailsTitle
+            // 
+            this.lblDetailsTitle.AutoSize = true;
+            this.lblDetailsTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailsTitle.Location = new System.Drawing.Point(27, 22);
+            this.lblDetailsTitle.Name = "lblDetailsTitle";
+            this.lblDetailsTitle.Size = new System.Drawing.Size(67, 29);
+            this.lblDetailsTitle.TabIndex = 0;
+            this.lblDetailsTitle.Text = "Title:";
+            // 
             // groupButtonsNoLogin
             // 
             this.groupButtonsNoLogin.Controls.Add(this.btnLogin);
@@ -274,6 +382,7 @@
             this.btnCheckoutHistory.TabIndex = 1;
             this.btnCheckoutHistory.Text = "Checkout History";
             this.btnCheckoutHistory.UseVisualStyleBackColor = true;
+            this.btnCheckoutHistory.Click += new System.EventHandler(this.btnCheckoutHistory_Click);
             // 
             // groupMemberInfo
             // 
@@ -284,114 +393,6 @@
             this.groupMemberInfo.TabStop = false;
             this.groupMemberInfo.Text = "Member Info";
             this.groupMemberInfo.Visible = false;
-            // 
-            // lblDetailsTitle
-            // 
-            this.lblDetailsTitle.AutoSize = true;
-            this.lblDetailsTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailsTitle.Location = new System.Drawing.Point(27, 22);
-            this.lblDetailsTitle.Name = "lblDetailsTitle";
-            this.lblDetailsTitle.Size = new System.Drawing.Size(67, 29);
-            this.lblDetailsTitle.TabIndex = 0;
-            this.lblDetailsTitle.Text = "Title:";
-            // 
-            // lblDetailsAuthor
-            // 
-            this.lblDetailsAuthor.AutoSize = true;
-            this.lblDetailsAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailsAuthor.Location = new System.Drawing.Point(6, 65);
-            this.lblDetailsAuthor.Name = "lblDetailsAuthor";
-            this.lblDetailsAuthor.Size = new System.Drawing.Size(88, 29);
-            this.lblDetailsAuthor.TabIndex = 1;
-            this.lblDetailsAuthor.Text = "Author:";
-            // 
-            // lblDetailsIsbn
-            // 
-            this.lblDetailsIsbn.AutoSize = true;
-            this.lblDetailsIsbn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailsIsbn.Location = new System.Drawing.Point(19, 107);
-            this.lblDetailsIsbn.Name = "lblDetailsIsbn";
-            this.lblDetailsIsbn.Size = new System.Drawing.Size(75, 29);
-            this.lblDetailsIsbn.TabIndex = 2;
-            this.lblDetailsIsbn.Text = "ISBN:";
-            // 
-            // lblDetailsPublishDate
-            // 
-            this.lblDetailsPublishDate.AutoSize = true;
-            this.lblDetailsPublishDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailsPublishDate.Location = new System.Drawing.Point(592, 22);
-            this.lblDetailsPublishDate.Name = "lblDetailsPublishDate";
-            this.lblDetailsPublishDate.Size = new System.Drawing.Size(155, 29);
-            this.lblDetailsPublishDate.TabIndex = 3;
-            this.lblDetailsPublishDate.Text = "Publish Date:";
-            // 
-            // lblDetailsAvailable
-            // 
-            this.lblDetailsAvailable.AutoSize = true;
-            this.lblDetailsAvailable.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailsAvailable.Location = new System.Drawing.Point(630, 65);
-            this.lblDetailsAvailable.Name = "lblDetailsAvailable";
-            this.lblDetailsAvailable.Size = new System.Drawing.Size(117, 29);
-            this.lblDetailsAvailable.TabIndex = 4;
-            this.lblDetailsAvailable.Text = "Available:";
-            // 
-            // lblDetailsQuantity
-            // 
-            this.lblDetailsQuantity.AutoSize = true;
-            this.lblDetailsQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetailsQuantity.Location = new System.Drawing.Point(641, 107);
-            this.lblDetailsQuantity.Name = "lblDetailsQuantity";
-            this.lblDetailsQuantity.Size = new System.Drawing.Size(106, 29);
-            this.lblDetailsQuantity.TabIndex = 5;
-            this.lblDetailsQuantity.Text = "Quantity:";
-            // 
-            // txtDetailsTitle
-            // 
-            this.txtDetailsTitle.Enabled = false;
-            this.txtDetailsTitle.Location = new System.Drawing.Point(100, 29);
-            this.txtDetailsTitle.Name = "txtDetailsTitle";
-            this.txtDetailsTitle.Size = new System.Drawing.Size(469, 22);
-            this.txtDetailsTitle.TabIndex = 6;
-            // 
-            // txtDetailsAuthor
-            // 
-            this.txtDetailsAuthor.Enabled = false;
-            this.txtDetailsAuthor.Location = new System.Drawing.Point(100, 72);
-            this.txtDetailsAuthor.Name = "txtDetailsAuthor";
-            this.txtDetailsAuthor.Size = new System.Drawing.Size(469, 22);
-            this.txtDetailsAuthor.TabIndex = 7;
-            // 
-            // txtDetailsIsbn
-            // 
-            this.txtDetailsIsbn.Enabled = false;
-            this.txtDetailsIsbn.Location = new System.Drawing.Point(100, 107);
-            this.txtDetailsIsbn.Name = "txtDetailsIsbn";
-            this.txtDetailsIsbn.Size = new System.Drawing.Size(469, 22);
-            this.txtDetailsIsbn.TabIndex = 8;
-            // 
-            // txtDetailsPublishDate
-            // 
-            this.txtDetailsPublishDate.Enabled = false;
-            this.txtDetailsPublishDate.Location = new System.Drawing.Point(753, 29);
-            this.txtDetailsPublishDate.Name = "txtDetailsPublishDate";
-            this.txtDetailsPublishDate.Size = new System.Drawing.Size(106, 22);
-            this.txtDetailsPublishDate.TabIndex = 9;
-            // 
-            // txtDetailsAvailable
-            // 
-            this.txtDetailsAvailable.Enabled = false;
-            this.txtDetailsAvailable.Location = new System.Drawing.Point(753, 72);
-            this.txtDetailsAvailable.Name = "txtDetailsAvailable";
-            this.txtDetailsAvailable.Size = new System.Drawing.Size(106, 22);
-            this.txtDetailsAvailable.TabIndex = 10;
-            // 
-            // txtDetailsQuantity
-            // 
-            this.txtDetailsQuantity.Enabled = false;
-            this.txtDetailsQuantity.Location = new System.Drawing.Point(753, 114);
-            this.txtDetailsQuantity.Name = "txtDetailsQuantity";
-            this.txtDetailsQuantity.Size = new System.Drawing.Size(106, 22);
-            this.txtDetailsQuantity.TabIndex = 11;
             // 
             // MemberView
             // 
