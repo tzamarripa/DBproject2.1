@@ -25,8 +25,8 @@ namespace DBproject2._1.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Richard\\Library.mdf;" +
-            "Integrated Security=True;Connect Timeout=5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Richard\\Downloads\\Li" +
+            "brary.mdf;Integrated Security=True;Connect Timeout=5")]
         public string DB_CONNECTION {
             get {
                 return ((string)(this["DB_CONNECTION"]));
@@ -48,6 +48,24 @@ namespace DBproject2._1.Properties {
         public int MEMBER_MIN_BOOK_SEARCH_CHARS {
             get {
                 return ((int)(this["MEMBER_MIN_BOOK_SEARCH_CHARS"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int CHECKOUT_RENEWAL_LIMIT {
+            get {
+                return ((int)(this["CHECKOUT_RENEWAL_LIMIT"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("14")]
+        public int DEFAULT_RENEWAL_DAYS {
+            get {
+                return ((int)(this["DEFAULT_RENEWAL_DAYS"]));
             }
         }
     }

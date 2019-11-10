@@ -34,6 +34,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,6 +76,12 @@
     <Compile Include="CheckoutHistoryView.Designer.cs">
       <DependentUpon>CheckoutHistoryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentCheckoutsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentCheckoutsView.Designer.cs">
+      <DependentUpon>CurrentCheckoutsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +113,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CheckoutHistoryView.resx">
       <DependentUpon>CheckoutHistoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentCheckoutsView.resx">
+      <DependentUpon>CurrentCheckoutsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
