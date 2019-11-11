@@ -70,11 +70,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddInventoryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddInventoryView.Designer.cs">
+      <DependentUpon>AddInventoryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddLibrarianView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddLibrarianView.Designer.cs">
+      <DependentUpon>AddLibrarianView.cs</DependentUpon>
+    </Compile>
     <Compile Include="CheckoutHistoryView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CheckoutHistoryView.Designer.cs">
       <DependentUpon>CheckoutHistoryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CurrentCheckoutsReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrentCheckoutsReportView.Designer.cs">
+      <DependentUpon>CurrentCheckoutsReportView.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentCheckoutsView.cs">
       <SubType>Form</SubType>
@@ -101,6 +119,24 @@
     <Compile Include="LibrarianView.Designer.cs">
       <DependentUpon>LibrarianView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageLibrarianAccountView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageLibrarianAccountView.Designer.cs">
+      <DependentUpon>ManageLibrarianAccountView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageLibrariansView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageLibrariansView.Designer.cs">
+      <DependentUpon>ManageLibrariansView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageMembersView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageMembersView.Designer.cs">
+      <DependentUpon>ManageMembersView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemberDetails.cs" />
     <Compile Include="MemberView.cs">
       <SubType>Form</SubType>
@@ -117,10 +153,43 @@
       <DependentUpon>Librarian1.cs</DependentUpon>
     </Compile>
     <Compile Include="PasswordHasher.cs" />
+    <Compile Include="PastDueReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PastDueReportView.Designer.cs">
+      <DependentUpon>PastDueReportView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterMemberView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterMemberView.Designer.cs">
+      <DependentUpon>RegisterMemberView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveInventoryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoveInventoryView.Designer.cs">
+      <DependentUpon>RemoveInventoryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnsView.Designer.cs">
+      <DependentUpon>ReturnsView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddInventoryView.resx">
+      <DependentUpon>AddInventoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddLibrarianView.resx">
+      <DependentUpon>AddLibrarianView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CheckoutHistoryView.resx">
       <DependentUpon>CheckoutHistoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentCheckoutsReportView.resx">
+      <DependentUpon>CurrentCheckoutsReportView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CurrentCheckoutsView.resx">
       <DependentUpon>CurrentCheckoutsView.cs</DependentUpon>
@@ -134,12 +203,24 @@
     <EmbeddedResource Include="LibrarianView.resx">
       <DependentUpon>LibrarianView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManageLibrarianAccountView.resx">
+      <DependentUpon>ManageLibrarianAccountView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageLibrariansView.resx">
+      <DependentUpon>ManageLibrariansView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageMembersView.resx">
+      <DependentUpon>ManageMembersView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MemberView.resx">
       <DependentUpon>MemberView.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Librarian1.resx">
       <DependentUpon>Librarian1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PastDueReportView.resx">
+      <DependentUpon>PastDueReportView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -151,6 +232,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RegisterMemberView.resx">
+      <DependentUpon>RegisterMemberView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoveInventoryView.resx">
+      <DependentUpon>RemoveInventoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnsView.resx">
+      <DependentUpon>ReturnsView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
