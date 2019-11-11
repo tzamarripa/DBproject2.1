@@ -27,25 +27,63 @@ namespace DBproject2._1
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            MemberView f1 = new MemberView();
-            f1.DbConnection = DbConnection;
-            this.Hide();
-            f1.ShowDialog();
+            using (MemberView form = new MemberView())
+            {
+                form.DbConnection = DbConnection;
+                this.Hide();
+                form.ShowDialog();
+            }
+
+            Close();
         }
 
         private void Checkoutbutton_Click(object sender, EventArgs e)
         {
-            Checkout f2 = new Checkout();
-            f2.DbConnection = DbConnection;
-            this.Hide();
-            f2.ShowDialog();
+            using (Checkout form = new Checkout())
+            {
+                form.DbConnection = DbConnection;
+                this.Hide();
+                form.ShowDialog();
+            }
+
+            Close();
         }
 
         private void Librarianbutton_Click(object sender, EventArgs e)
         {
-            Librarian1 f3 = new Librarian1();
-            this.Hide();
-            f3.ShowDialog();
+            //this will be the librarian that successfully logged in
+            LibrarianAccount librarian = null;
+
+            //create the login form
+            using (Librarian1 form = new Librarian1())
+            {
+                //ensure it has a DB connection
+                form.DbConnection = DbConnection;
+                this.Hide();
+                //display the login form as a modal
+                var result = form.ShowDialog();
+                //if the user login was successful
+                if(result == DialogResult.OK)
+                {
+                    //pull the user object
+                    librarian = form.LibrarianAccount;
+                    //do something with the data
+                    
+                }
+            }
+
+            if(librarian != null)
+            {
+                using (LibrarianView form = new LibrarianView())
+                {
+                    form.DbConnection = DbConnection;
+                    form.Account = librarian;
+
+                    form.ShowDialog();
+                }
+            }
+
+            Close();
         }
     }
 }

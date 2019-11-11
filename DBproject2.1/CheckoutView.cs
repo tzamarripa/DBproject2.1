@@ -51,11 +51,6 @@ namespace DBproject2._1
             btnContinueSelections.Enabled = gridSelections.Rows.Count > 0;
         }
 
-        private void Checkout_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void btnMemberLookup_Click(object sender, EventArgs e)
         {
             ClearMemberSearchErrorMessages();

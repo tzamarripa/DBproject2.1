@@ -328,7 +328,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Checkout";
             this.Text = "Checkout";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Checkout_FormClosed);
             this.Load += new System.EventHandler(this.Checkout_Load);
             this.groupMemberLookup.ResumeLayout(false);
             this.groupMemberLookup.PerformLayout();

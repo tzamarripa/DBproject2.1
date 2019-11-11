@@ -94,6 +94,13 @@
     <Compile Include="CheckoutView.Designer.cs">
       <DependentUpon>CheckoutView.cs</DependentUpon>
     </Compile>
+    <Compile Include="LibrarianAccount.cs" />
+    <Compile Include="LibrarianView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrarianView.Designer.cs">
+      <DependentUpon>LibrarianView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemberDetails.cs" />
     <Compile Include="MemberView.cs">
       <SubType>Form</SubType>
@@ -109,6 +116,7 @@
     <Compile Include="Librarian1.Designer.cs">
       <DependentUpon>Librarian1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordHasher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CheckoutHistoryView.resx">
@@ -122,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CheckoutView.resx">
       <DependentUpon>CheckoutView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibrarianView.resx">
+      <DependentUpon>LibrarianView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberView.resx">
       <DependentUpon>MemberView.cs</DependentUpon>

@@ -119,7 +119,7 @@ namespace DBproject2._1
 
         private void MemberView_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            
         }
         /// <summary>
         /// User clicked the Clear button, so clear all items related to search.
