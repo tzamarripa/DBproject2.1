@@ -138,6 +138,12 @@
       <DependentUpon>ManageMembersView.cs</DependentUpon>
     </Compile>
     <Compile Include="MemberDetails.cs" />
+    <Compile Include="MemberLoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberLoginView.Designer.cs">
+      <DependentUpon>MemberLoginView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemberView.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageMembersView.resx">
       <DependentUpon>ManageMembersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberLoginView.resx">
+      <DependentUpon>MemberLoginView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberView.resx">
       <DependentUpon>MemberView.cs</DependentUpon>
