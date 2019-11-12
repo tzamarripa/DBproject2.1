@@ -29,5 +29,18 @@ namespace DBproject2._1
 
             InitializeComponent();
         }
+
+        private void PastDueReportView_Load(object sender, EventArgs e)
+        {
+            SqlCommand cmd = DbConnection.CreateCommand();
+            cmd.CommandText = "SELECT * FROM CHECKOUT_ITEM WHERE DueDate<@today";
+            cmd.Parameters.AddWithValue("@today", DateTime.Now);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            DataTable tempTable = new DataTable();
+            tempTable.Load(reader);
+
+            dataGridView1.DataSource = tempTable;
+        }
     }
 }
