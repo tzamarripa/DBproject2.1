@@ -39,7 +39,7 @@ namespace DBproject2._1
 
         private void Checkoutbutton_Click(object sender, EventArgs e)
         {
-            using (Checkout form = new Checkout())
+            using (CheckoutView form = new CheckoutView())
             {
                 form.DbConnection = DbConnection;
                 this.Hide();

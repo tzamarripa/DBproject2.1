@@ -10,17 +10,18 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Transactions;
+using System.Collections;
 
 namespace DBproject2._1
 {
-    public partial class Checkout : Form
+    public partial class CheckoutView : Form
     {
         public SqlConnection DbConnection { get; set; }
 
         //entity containing info during entire checkout process
         private CheckoutInfo checkoutInfo;
 
-        public Checkout()
+        public CheckoutView()
         {
             InitializeComponent();
         }
@@ -242,27 +243,47 @@ namespace DBproject2._1
         private CheckoutItem FindByBarcode(string barcode)
         {
             var cmd = DbConnection.CreateCommand();
-            cmd.CommandText = "select ISBN, Title, Author_Fname, Author_Lname from BOOK join INVENTORY on ISBN = BookID where barcode = @barcode";
+            //cmd.CommandText = "select ISBN, Title, Author_Fname, Author_Lname from BOOK join INVENTORY on ISBN = BookID where barcode = @barcode";
+            cmd.CommandText = "select b.ISBN, b.Title, a.Fname, a.Minit, a.Lname "+
+                                "from BOOK b " +
+                                "join INVENTORY i on i.BookID = b.ISBN " +
+                                "join BOOK_AUTHOR ba on ba.BookID = b.ISBN " +
+                                "join AUTHOR a on a.ID = ba.AuthorID " +
+                                "where barcode = @barcode";
             cmd.Parameters.AddWithValue("barcode", barcode);
+            Hashtable t = new Hashtable();
+
+            string ISBN = null;
             using (var reader = cmd.ExecuteReader())
             {
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    CheckoutItem item = new CheckoutItem
-                    {
-                        ISBN = reader.GetString(0),
-                        Title = reader.GetString(1),
-                        AuthorName = string.Format("{1}, {0}", reader.GetString(2), reader.GetString(3)),
-                        Barcode = barcode
-                    };
+                    ISBN = reader.GetString(0);
 
-                    return item;
-                }
-                else
-                {
-                    return null;
+                    var item = (CheckoutItem)t[ISBN];
+
+                    if(item == null)
+                    {
+                        item = new CheckoutItem
+                        {
+                            ISBN = ISBN,
+                            Title = reader.GetString(1),
+                            Barcode = barcode
+                        };
+
+                        t.Add(ISBN, item);
+                    }
+
+                    item.Authors.Add(new Author()
+                    {
+                        Firstname = reader.GetString(2),
+                        MiddleInitial = (reader.IsDBNull(3) ? null : reader.GetString(3)),
+                        Lastname = reader.GetString(4)
+                    });
                 }
             }
+
+            return (ISBN == null ? null : (CheckoutItem)t[ISBN]);
         }
 
         private void NotifySelectionError(string message)
@@ -362,8 +383,32 @@ namespace DBproject2._1
         {
             internal string ISBN { get; set; }
             internal string Title { get; set; }
-            internal string AuthorName { get; set; }
+            internal string AuthorNames { get
+                {
+                    List<string> names = new List<string>(Authors.Count);
+
+                    foreach(var a in Authors)
+                    {
+                        if(a.MiddleInitial == null || a.MiddleInitial.Length == 0)
+                        {
+                            names.Add(string.Format("{0} {1}", a.Firstname, a.Lastname));
+                        } else
+                        {
+                            names.Add(string.Format("{0} {1}. {2}", a.Firstname, a.MiddleInitial, a.Lastname));
+                        }
+                    }
+
+                    return string.Join(", ", names);
+                }
+            }
             internal string Barcode { get; set; }
+            internal List<Author> Authors { get; set; }
+
+            public CheckoutItem()
+            {
+                //default for two authors
+                Authors = new List<Author>(2);
+            }
         }
 
         class MemberInfo
@@ -382,6 +427,13 @@ namespace DBproject2._1
             }
         }
 
+        class Author
+        {
+            internal string Firstname { get; set; }
+            internal string MiddleInitial { get; set; }
+            internal string Lastname { get; set; }
+        }
+
         class CheckoutInfo
         {
             internal MemberInfo Member { get; set; }
@@ -397,7 +449,7 @@ namespace DBproject2._1
                 SelectedItems = new DataTable("Selected Items");
                 
                 SelectedItems.Columns.Add("Title");
-                SelectedItems.Columns.Add("Author");
+                SelectedItems.Columns.Add("Author(s)");
                 SelectedItems.Columns.Add("ISBN");
                 SelectedItems.Columns.Add("Barcode");
 
@@ -407,7 +459,7 @@ namespace DBproject2._1
             internal void AddItem(CheckoutItem item)
             {
                 Selections.Add(item);
-                SelectedItems.Rows.Add(item.Title, item.AuthorName, item.ISBN, item.Barcode);
+                SelectedItems.Rows.Add(item.Title, item.AuthorNames, item.ISBN, item.Barcode);
             }
 
             internal void RemoveItem(int index)

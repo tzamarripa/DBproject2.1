@@ -1,6 +1,6 @@
 ﻿namespace DBproject2._1
 {
-    partial class Checkout
+    partial class CheckoutView
     {
         /// <summary>
         /// Required designer variable.
@@ -45,12 +45,12 @@
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.lblBarcode = new System.Windows.Forms.Label();
             this.groupReview = new System.Windows.Forms.GroupBox();
+            this.gridReview = new System.Windows.Forms.DataGridView();
             this.lblDueDate = new System.Windows.Forms.Label();
             this.lblCheckoutReview = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnEditSelection = new System.Windows.Forms.Button();
             this.btnCancelCheckout = new System.Windows.Forms.Button();
-            this.gridReview = new System.Windows.Forms.DataGridView();
             this.groupMemberLookup.SuspendLayout();
             this.groupChooseBooks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridSelections)).BeginInit();
@@ -89,11 +89,11 @@
             this.txtMemberId.Size = new System.Drawing.Size(255, 22);
             this.txtMemberId.TabIndex = 2;
             // 
-            // btnContinueMemberId
+            // btnMemberLookup
             // 
             this.btnMemberLookup.Location = new System.Drawing.Point(151, 185);
             this.btnMemberLookup.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMemberLookup.Name = "btnContinueMemberId";
+            this.btnMemberLookup.Name = "btnMemberLookup";
             this.btnMemberLookup.Size = new System.Drawing.Size(159, 42);
             this.btnMemberLookup.TabIndex = 3;
             this.btnMemberLookup.Text = "Continue";
@@ -124,6 +124,7 @@
             // 
             // groupChooseBooks
             // 
+            this.groupChooseBooks.Controls.Add(this.groupReview);
             this.groupChooseBooks.Controls.Add(this.btnRemoveSelected);
             this.groupChooseBooks.Controls.Add(this.gridSelections);
             this.groupChooseBooks.Controls.Add(this.lblBarcodeError);
@@ -133,9 +134,9 @@
             this.groupChooseBooks.Controls.Add(this.btnAddBarcode);
             this.groupChooseBooks.Controls.Add(this.txtBarcode);
             this.groupChooseBooks.Controls.Add(this.lblBarcode);
-            this.groupChooseBooks.Location = new System.Drawing.Point(149, 97);
+            this.groupChooseBooks.Location = new System.Drawing.Point(45, 97);
             this.groupChooseBooks.Name = "groupChooseBooks";
-            this.groupChooseBooks.Size = new System.Drawing.Size(726, 445);
+            this.groupChooseBooks.Size = new System.Drawing.Size(947, 445);
             this.groupChooseBooks.TabIndex = 5;
             this.groupChooseBooks.TabStop = false;
             this.groupChooseBooks.Visible = false;
@@ -143,7 +144,7 @@
             // btnRemoveSelected
             // 
             this.btnRemoveSelected.Enabled = false;
-            this.btnRemoveSelected.Location = new System.Drawing.Point(315, 405);
+            this.btnRemoveSelected.Location = new System.Drawing.Point(415, 405);
             this.btnRemoveSelected.Name = "btnRemoveSelected";
             this.btnRemoveSelected.Size = new System.Drawing.Size(132, 23);
             this.btnRemoveSelected.TabIndex = 8;
@@ -164,14 +165,14 @@
             this.gridSelections.RowHeadersWidth = 51;
             this.gridSelections.RowTemplate.Height = 24;
             this.gridSelections.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridSelections.Size = new System.Drawing.Size(714, 282);
+            this.gridSelections.Size = new System.Drawing.Size(935, 282);
             this.gridSelections.TabIndex = 7;
             // 
             // lblBarcodeError
             // 
             this.lblBarcodeError.AutoSize = true;
             this.lblBarcodeError.ForeColor = System.Drawing.Color.Red;
-            this.lblBarcodeError.Location = new System.Drawing.Point(312, 90);
+            this.lblBarcodeError.Location = new System.Drawing.Point(416, 90);
             this.lblBarcodeError.Name = "lblBarcodeError";
             this.lblBarcodeError.Size = new System.Drawing.Size(0, 17);
             this.lblBarcodeError.TabIndex = 6;
@@ -179,14 +180,14 @@
             // lblMemberHeader
             // 
             this.lblMemberHeader.AutoSize = true;
-            this.lblMemberHeader.Location = new System.Drawing.Point(507, 22);
+            this.lblMemberHeader.Location = new System.Drawing.Point(611, 22);
             this.lblMemberHeader.Name = "lblMemberHeader";
             this.lblMemberHeader.Size = new System.Drawing.Size(0, 17);
             this.lblMemberHeader.TabIndex = 5;
             // 
             // btnCancelSelections
             // 
-            this.btnCancelSelections.Location = new System.Drawing.Point(123, 405);
+            this.btnCancelSelections.Location = new System.Drawing.Point(259, 405);
             this.btnCancelSelections.Name = "btnCancelSelections";
             this.btnCancelSelections.Size = new System.Drawing.Size(125, 23);
             this.btnCancelSelections.TabIndex = 4;
@@ -197,7 +198,7 @@
             // btnContinueSelections
             // 
             this.btnContinueSelections.Enabled = false;
-            this.btnContinueSelections.Location = new System.Drawing.Point(503, 405);
+            this.btnContinueSelections.Location = new System.Drawing.Point(576, 405);
             this.btnContinueSelections.Name = "btnContinueSelections";
             this.btnContinueSelections.Size = new System.Drawing.Size(120, 23);
             this.btnContinueSelections.TabIndex = 3;
@@ -207,7 +208,7 @@
             // 
             // btnAddBarcode
             // 
-            this.btnAddBarcode.Location = new System.Drawing.Point(503, 61);
+            this.btnAddBarcode.Location = new System.Drawing.Point(621, 58);
             this.btnAddBarcode.Name = "btnAddBarcode";
             this.btnAddBarcode.Size = new System.Drawing.Size(75, 23);
             this.btnAddBarcode.TabIndex = 2;
@@ -217,16 +218,16 @@
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(273, 62);
+            this.txtBarcode.Location = new System.Drawing.Point(334, 62);
             this.txtBarcode.MaxLength = 10;
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(209, 22);
+            this.txtBarcode.Size = new System.Drawing.Size(267, 22);
             this.txtBarcode.TabIndex = 1;
             // 
             // lblBarcode
             // 
             this.lblBarcode.AutoSize = true;
-            this.lblBarcode.Location = new System.Drawing.Point(183, 64);
+            this.lblBarcode.Location = new System.Drawing.Point(256, 64);
             this.lblBarcode.Name = "lblBarcode";
             this.lblBarcode.Size = new System.Drawing.Size(65, 17);
             this.lblBarcode.TabIndex = 0;
@@ -240,60 +241,12 @@
             this.groupReview.Controls.Add(this.btnConfirm);
             this.groupReview.Controls.Add(this.btnEditSelection);
             this.groupReview.Controls.Add(this.btnCancelCheckout);
-            this.groupReview.Location = new System.Drawing.Point(143, 97);
+            this.groupReview.Location = new System.Drawing.Point(0, 0);
             this.groupReview.Name = "groupReview";
-            this.groupReview.Size = new System.Drawing.Size(726, 445);
+            this.groupReview.Size = new System.Drawing.Size(947, 445);
             this.groupReview.TabIndex = 6;
             this.groupReview.TabStop = false;
             this.groupReview.Visible = false;
-            // 
-            // lblDueDate
-            // 
-            this.lblDueDate.AutoSize = true;
-            this.lblDueDate.Location = new System.Drawing.Point(408, 32);
-            this.lblDueDate.Name = "lblDueDate";
-            this.lblDueDate.Size = new System.Drawing.Size(0, 17);
-            this.lblDueDate.TabIndex = 4;
-            // 
-            // lblCheckoutReview
-            // 
-            this.lblCheckoutReview.AutoSize = true;
-            this.lblCheckoutReview.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckoutReview.Location = new System.Drawing.Point(39, 22);
-            this.lblCheckoutReview.Name = "lblCheckoutReview";
-            this.lblCheckoutReview.Size = new System.Drawing.Size(235, 32);
-            this.lblCheckoutReview.TabIndex = 3;
-            this.lblCheckoutReview.Text = "Checkout Review";
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.Location = new System.Drawing.Point(445, 400);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(133, 23);
-            this.btnConfirm.TabIndex = 2;
-            this.btnConfirm.Text = "Confirm Checkout";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // btnEditSelection
-            // 
-            this.btnEditSelection.Location = new System.Drawing.Point(315, 399);
-            this.btnEditSelection.Name = "btnEditSelection";
-            this.btnEditSelection.Size = new System.Drawing.Size(117, 23);
-            this.btnEditSelection.TabIndex = 1;
-            this.btnEditSelection.Text = "Edit Selection";
-            this.btnEditSelection.UseVisualStyleBackColor = true;
-            this.btnEditSelection.Click += new System.EventHandler(this.btnEditSelection_Click);
-            // 
-            // btnCancelCheckout
-            // 
-            this.btnCancelCheckout.Location = new System.Drawing.Point(166, 399);
-            this.btnCancelCheckout.Name = "btnCancelCheckout";
-            this.btnCancelCheckout.Size = new System.Drawing.Size(131, 23);
-            this.btnCancelCheckout.TabIndex = 0;
-            this.btnCancelCheckout.Text = "Cancel Checkout";
-            this.btnCancelCheckout.UseVisualStyleBackColor = true;
-            this.btnCancelCheckout.Click += new System.EventHandler(this.btnCancelCheckout_Click);
             // 
             // gridReview
             // 
@@ -312,21 +265,68 @@
             this.gridReview.ShowCellErrors = false;
             this.gridReview.ShowEditingIcon = false;
             this.gridReview.ShowRowErrors = false;
-            this.gridReview.Size = new System.Drawing.Size(714, 316);
+            this.gridReview.Size = new System.Drawing.Size(941, 316);
             this.gridReview.TabIndex = 5;
             // 
-            // Checkout
+            // lblDueDate
+            // 
+            this.lblDueDate.AutoSize = true;
+            this.lblDueDate.Location = new System.Drawing.Point(408, 32);
+            this.lblDueDate.Name = "lblDueDate";
+            this.lblDueDate.Size = new System.Drawing.Size(0, 17);
+            this.lblDueDate.TabIndex = 4;
+            // 
+            // lblCheckoutReview
+            // 
+            this.lblCheckoutReview.AutoSize = true;
+            this.lblCheckoutReview.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheckoutReview.Location = new System.Drawing.Point(366, 22);
+            this.lblCheckoutReview.Name = "lblCheckoutReview";
+            this.lblCheckoutReview.Size = new System.Drawing.Size(235, 32);
+            this.lblCheckoutReview.TabIndex = 3;
+            this.lblCheckoutReview.Text = "Checkout Review";
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Location = new System.Drawing.Point(560, 399);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(133, 23);
+            this.btnConfirm.TabIndex = 2;
+            this.btnConfirm.Text = "Confirm Checkout";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // btnEditSelection
+            // 
+            this.btnEditSelection.Location = new System.Drawing.Point(430, 398);
+            this.btnEditSelection.Name = "btnEditSelection";
+            this.btnEditSelection.Size = new System.Drawing.Size(117, 23);
+            this.btnEditSelection.TabIndex = 1;
+            this.btnEditSelection.Text = "Edit Selection";
+            this.btnEditSelection.UseVisualStyleBackColor = true;
+            this.btnEditSelection.Click += new System.EventHandler(this.btnEditSelection_Click);
+            // 
+            // btnCancelCheckout
+            // 
+            this.btnCancelCheckout.Location = new System.Drawing.Point(281, 398);
+            this.btnCancelCheckout.Name = "btnCancelCheckout";
+            this.btnCancelCheckout.Size = new System.Drawing.Size(131, 23);
+            this.btnCancelCheckout.TabIndex = 0;
+            this.btnCancelCheckout.Text = "Cancel Checkout";
+            this.btnCancelCheckout.UseVisualStyleBackColor = true;
+            this.btnCancelCheckout.Click += new System.EventHandler(this.btnCancelCheckout_Click);
+            // 
+            // CheckoutView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.groupReview);
             this.Controls.Add(this.groupChooseBooks);
             this.Controls.Add(this.groupMemberLookup);
             this.Controls.Add(this.checkoutlabel);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Checkout";
+            this.Name = "CheckoutView";
             this.Text = "Checkout";
             this.Load += new System.EventHandler(this.Checkout_Load);
             this.groupMemberLookup.ResumeLayout(false);
