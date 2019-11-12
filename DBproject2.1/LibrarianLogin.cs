@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace DBproject2._1
 {
-    public partial class Librarian1 : Form
+    public partial class LibrarianLogin : Form
     {
         public SqlConnection DbConnection { get; set; }
 
         public LibrarianAccount LibrarianAccount { get; set; }
 
-        public Librarian1()
+        public LibrarianLogin()
         {
             InitializeComponent();
         }

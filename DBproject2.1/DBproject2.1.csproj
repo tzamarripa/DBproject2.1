@@ -146,11 +146,11 @@
       <DependentUpon>MemberView.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Librarian1.cs">
+    <Compile Include="LibrarianLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Librarian1.Designer.cs">
-      <DependentUpon>Librarian1.cs</DependentUpon>
+    <Compile Include="LibrarianLogin.Designer.cs">
+      <DependentUpon>LibrarianLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="PasswordHasher.cs" />
     <Compile Include="PastDueReportView.cs">
@@ -216,8 +216,8 @@
       <DependentUpon>MemberView.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Librarian1.resx">
-      <DependentUpon>Librarian1.cs</DependentUpon>
+    <EmbeddedResource Include="LibrarianLogin.resx">
+      <DependentUpon>LibrarianLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PastDueReportView.resx">
       <DependentUpon>PastDueReportView.cs</DependentUpon>

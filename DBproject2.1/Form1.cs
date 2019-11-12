@@ -55,7 +55,7 @@ namespace DBproject2._1
             LibrarianAccount librarian = null;
 
             //create the login form
-            using (Librarian1 form = new Librarian1())
+            using (LibrarianLogin form = new LibrarianLogin())
             {
                 //ensure it has a DB connection
                 form.DbConnection = DbConnection;

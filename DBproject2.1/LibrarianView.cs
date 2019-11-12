@@ -43,6 +43,9 @@ namespace DBproject2._1
                 {
                     form.ShowDialog();
                 }
+
+                //data likely changed, so refresh the summary display
+                LoadSummaryInfo();
             }
         }
 

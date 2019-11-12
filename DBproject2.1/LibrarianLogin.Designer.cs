@@ -1,6 +1,6 @@
 ﻿namespace DBproject2._1
 {
-    partial class Librarian1
+    partial class LibrarianLogin
     {
         /// <summary>
         /// Required designer variable.
