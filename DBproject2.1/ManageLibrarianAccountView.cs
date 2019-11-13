@@ -131,6 +131,12 @@ namespace DBproject2._1
             errorCity.SetError(txtCity, "");
             errorState.SetError(txtState, "");
             errorZipcode.SetError(txtZipcode, "");
+
+            ClearPasswordRelatedErrors();
+        }
+
+        private void ClearPasswordRelatedErrors()
+        {
             errorPassword.SetError(txtPassword, "");
             errorConfirm.SetError(txtConfirm, "");
         }
@@ -201,6 +207,8 @@ namespace DBproject2._1
         private void checkBoxChangePassword_CheckedChanged(object sender, EventArgs e)
         {
             TogglePasswordChangeEnabled(checkBoxChangePassword.Checked);
+
+            ClearPasswordRelatedErrors();
         }
 
         private void TogglePasswordChangeEnabled(bool state)

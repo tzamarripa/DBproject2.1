@@ -78,8 +78,13 @@ namespace DBproject2._1
             errorCity.SetError(txtCity, "");
             errorState.SetError(txtState, "");
             errorZipcode.SetError(txtZipcode, "");
+
+            ClearPasswordRelatedErrors();
+        }
+
+        private void ClearPasswordRelatedErrors()
+        {
             errorPassword.SetError(txtPassword, "");
-            errorConfirm.SetError(txtConfirm, "");
         }
 
         private bool ValidateInputs()
@@ -134,18 +139,6 @@ namespace DBproject2._1
                     errorPassword.SetError(txtPassword, "value required");
                     invalid = true;
                 }
-
-                if (txtConfirm.TextLength == 0)
-                {
-                    errorConfirm.SetError(txtConfirm, "value required");
-                    invalid = true;
-                }
-
-                if (txtConfirm.TextLength > 0 && txtConfirm.TextLength > 0 && !txtPassword.Text.Equals(txtConfirm.Text))
-                {
-                    errorConfirm.SetError(txtConfirm, "values do not match");
-                    invalid = true;
-                }
             }
 
             return invalid;
@@ -193,14 +186,20 @@ namespace DBproject2._1
         private void checkBoxChangePassword_CheckedChanged(object sender, EventArgs e)
         {
             TogglePasswordChangeEnabled(checkBoxChangePassword.Checked);
+
+            ClearPasswordRelatedErrors();
         }
 
         private void TogglePasswordChangeEnabled(bool state)
         {
             labelPassword.Enabled = state;
-            labelConfirm.Enabled = state;
             txtPassword.Enabled = state;
-            txtConfirm.Enabled = state;
+            btnGeneratePassword.Enabled = state;
+        }
+
+        private void btnGeneratePassword_Click(object sender, EventArgs e)
+        {
+            txtPassword.Text = PasswordGenerator.Generate();
         }
     }
 }

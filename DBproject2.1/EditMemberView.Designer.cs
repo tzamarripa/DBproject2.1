@@ -53,13 +53,11 @@
             this.txtLastname = new System.Windows.Forms.TextBox();
             this.txtFirstname = new System.Windows.Forms.TextBox();
             this.errorPassword = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorConfirm = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupPassword = new System.Windows.Forms.GroupBox();
-            this.txtConfirm = new System.Windows.Forms.TextBox();
-            this.labelConfirm = new System.Windows.Forms.Label();
             this.checkBoxChangePassword = new System.Windows.Forms.CheckBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
+            this.btnGeneratePassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorZipcode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorCity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorStreet)).BeginInit();
@@ -68,7 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorFirstname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorState)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorConfirm)).BeginInit();
             this.groupPassword.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,9 +95,10 @@
             // 
             // dateDob
             // 
+            this.dateDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateDob.Location = new System.Drawing.Point(365, 148);
             this.dateDob.Name = "dateDob";
-            this.dateDob.Size = new System.Drawing.Size(200, 22);
+            this.dateDob.Size = new System.Drawing.Size(109, 22);
             this.dateDob.TabIndex = 49;
             // 
             // errorState
@@ -258,44 +256,18 @@
             // 
             this.errorPassword.ContainerControl = this;
             // 
-            // errorConfirm
-            // 
-            this.errorConfirm.ContainerControl = this;
-            // 
             // groupPassword
             // 
-            this.groupPassword.Controls.Add(this.txtConfirm);
-            this.groupPassword.Controls.Add(this.labelConfirm);
+            this.groupPassword.Controls.Add(this.btnGeneratePassword);
             this.groupPassword.Controls.Add(this.checkBoxChangePassword);
             this.groupPassword.Controls.Add(this.txtPassword);
             this.groupPassword.Controls.Add(this.labelPassword);
-            this.groupPassword.Location = new System.Drawing.Point(221, 424);
+            this.groupPassword.Location = new System.Drawing.Point(147, 436);
             this.groupPassword.Name = "groupPassword";
-            this.groupPassword.Size = new System.Drawing.Size(382, 138);
+            this.groupPassword.Size = new System.Drawing.Size(462, 116);
             this.groupPassword.TabIndex = 50;
             this.groupPassword.TabStop = false;
             this.groupPassword.Text = "Change Password";
-            // 
-            // txtConfirm
-            // 
-            this.txtConfirm.Enabled = false;
-            this.txtConfirm.Location = new System.Drawing.Point(84, 81);
-            this.txtConfirm.Margin = new System.Windows.Forms.Padding(4);
-            this.txtConfirm.Name = "txtConfirm";
-            this.txtConfirm.Size = new System.Drawing.Size(265, 22);
-            this.txtConfirm.TabIndex = 42;
-            this.txtConfirm.UseSystemPasswordChar = true;
-            // 
-            // labelConfirm
-            // 
-            this.labelConfirm.AutoSize = true;
-            this.labelConfirm.Enabled = false;
-            this.labelConfirm.Location = new System.Drawing.Point(7, 81);
-            this.labelConfirm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelConfirm.Name = "labelConfirm";
-            this.labelConfirm.Size = new System.Drawing.Size(56, 17);
-            this.labelConfirm.TabIndex = 41;
-            this.labelConfirm.Text = "Confirm";
             // 
             // checkBoxChangePassword
             // 
@@ -311,23 +283,32 @@
             // txtPassword
             // 
             this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(84, 51);
+            this.txtPassword.Location = new System.Drawing.Point(84, 65);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(265, 22);
             this.txtPassword.TabIndex = 40;
-            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
             this.labelPassword.Enabled = false;
-            this.labelPassword.Location = new System.Drawing.Point(7, 54);
+            this.labelPassword.Location = new System.Drawing.Point(7, 68);
             this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(69, 17);
             this.labelPassword.TabIndex = 39;
             this.labelPassword.Text = "Password";
+            // 
+            // btnGeneratePassword
+            // 
+            this.btnGeneratePassword.Location = new System.Drawing.Point(356, 60);
+            this.btnGeneratePassword.Name = "btnGeneratePassword";
+            this.btnGeneratePassword.Size = new System.Drawing.Size(93, 33);
+            this.btnGeneratePassword.TabIndex = 41;
+            this.btnGeneratePassword.Text = "Generate";
+            this.btnGeneratePassword.UseVisualStyleBackColor = true;
+            this.btnGeneratePassword.Click += new System.EventHandler(this.btnGeneratePassword_Click);
             // 
             // EditMemberView
             // 
@@ -362,7 +343,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorFirstname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorState)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorConfirm)).EndInit();
             this.groupPassword.ResumeLayout(false);
             this.groupPassword.PerformLayout();
             this.ResumeLayout(false);
@@ -396,12 +376,10 @@
         private System.Windows.Forms.ErrorProvider errorFirstname;
         private System.Windows.Forms.ErrorProvider errorState;
         private System.Windows.Forms.GroupBox groupPassword;
-        private System.Windows.Forms.TextBox txtConfirm;
-        private System.Windows.Forms.Label labelConfirm;
         private System.Windows.Forms.CheckBox checkBoxChangePassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.ErrorProvider errorPassword;
-        private System.Windows.Forms.ErrorProvider errorConfirm;
+        private System.Windows.Forms.Button btnGeneratePassword;
     }
 }

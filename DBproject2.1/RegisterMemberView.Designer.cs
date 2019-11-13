@@ -210,9 +210,10 @@
             // 
             // dateDob
             // 
+            this.dateDob.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateDob.Location = new System.Drawing.Point(477, 161);
             this.dateDob.Name = "dateDob";
-            this.dateDob.Size = new System.Drawing.Size(200, 22);
+            this.dateDob.Size = new System.Drawing.Size(111, 22);
             this.dateDob.TabIndex = 33;
             // 
             // errorFirstname
