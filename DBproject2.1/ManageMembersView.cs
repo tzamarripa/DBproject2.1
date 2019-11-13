@@ -183,7 +183,7 @@ namespace DBproject2._1
 
             if (recordCount == 0)
             {
-                MessageBox.Show("No members matched your criteria", "Not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No record matched your criteria", "Not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

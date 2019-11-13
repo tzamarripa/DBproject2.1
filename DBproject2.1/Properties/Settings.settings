@@ -20,5 +20,8 @@
     <Setting Name="MEMBER_NAME_SEARCH_MIN_CHARS" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">3</Value>
     </Setting>
+    <Setting Name="LIBRARIAN_NAME_SEARCH_MIN_CHARS" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

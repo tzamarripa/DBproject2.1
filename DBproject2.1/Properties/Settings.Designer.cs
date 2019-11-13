@@ -77,5 +77,14 @@ namespace DBproject2._1.Properties {
                 return ((int)(this["MEMBER_NAME_SEARCH_MIN_CHARS"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int LIBRARIAN_NAME_SEARCH_MIN_CHARS {
+            get {
+                return ((int)(this["LIBRARIAN_NAME_SEARCH_MIN_CHARS"]));
+            }
+        }
     }
 }
