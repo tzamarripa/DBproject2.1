@@ -159,7 +159,7 @@
     <Compile Include="LibrarianLogin.Designer.cs">
       <DependentUpon>LibrarianLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="PasswordHasher.cs" />
+    <Compile Include="PasswordUtils.cs" />
     <Compile Include="PastDueReportView.cs">
       <SubType>Form</SubType>
     </Compile>

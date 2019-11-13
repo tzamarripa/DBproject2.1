@@ -124,9 +124,11 @@ namespace DBproject2._1
             if(txtZipcode.TextLength != 5)
             {
                 errorZipcode.SetError(txtZipcode, "5 digits required");
+                invalid = true;
             } else if(!int.TryParse(txtZipcode.Text, out _))
             {
                 errorZipcode.SetError(txtZipcode, "numeric values only");
+                invalid = true;
             }
 
             if (dateStartDate.Value.Date > DateTime.Now.Date)
@@ -146,23 +148,7 @@ namespace DBproject2._1
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            txtPassword.Text = GenerateRandomPassword(10);
-        }
-
-        private string GenerateRandomPassword(int quantity)
-        {
-            //something simple taken from Stack Overflow
-            //https://stackoverflow.com/questions/1344221/how-can-i-generate-random-alphanumeric-strings
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[quantity];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            return new String(stringChars);
+            txtPassword.Text = PasswordGenerator.Generate();
         }
     }
 }

@@ -166,10 +166,12 @@ namespace DBproject2._1
             if (txtZipcode.TextLength != 5)
             {
                 errorZipcode.SetError(txtZipcode, "5 digits required");
+                invalid = true;
             }
             else if (!int.TryParse(txtZipcode.Text, out _))
             {
                 errorZipcode.SetError(txtZipcode, "numeric values only");
+                invalid = true;
             }
 
             if (checkBoxChangePassword.Checked)
