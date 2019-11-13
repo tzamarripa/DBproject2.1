@@ -40,33 +40,32 @@
             this.gridCheckouts.AllowUserToDeleteRows = false;
             this.gridCheckouts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridCheckouts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCheckouts.Location = new System.Drawing.Point(38, 50);
-            this.gridCheckouts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridCheckouts.Location = new System.Drawing.Point(12, 62);
+            this.gridCheckouts.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridCheckouts.Name = "gridCheckouts";
             this.gridCheckouts.ReadOnly = true;
             this.gridCheckouts.RowHeadersWidth = 51;
             this.gridCheckouts.RowTemplate.Height = 24;
-            this.gridCheckouts.Size = new System.Drawing.Size(519, 283);
+            this.gridCheckouts.Size = new System.Drawing.Size(1092, 348);
             this.gridCheckouts.TabIndex = 0;
             // 
             // lblHeader
             // 
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHeader.Location = new System.Drawing.Point(170, 3);
-            this.lblHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHeader.Location = new System.Drawing.Point(381, 9);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(260, 37);
+            this.lblHeader.Size = new System.Drawing.Size(326, 46);
             this.lblHeader.TabIndex = 2;
             this.lblHeader.Text = "Checkout History";
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(224, 337);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Location = new System.Drawing.Point(455, 414);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(146, 28);
+            this.btnClose.Size = new System.Drawing.Size(195, 34);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -74,13 +73,13 @@
             // 
             // CheckoutHistoryView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(1116, 450);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.gridCheckouts);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CheckoutHistoryView";
             this.Text = "CheckoutHistoryView";
             this.Load += new System.EventHandler(this.CheckoutHistoryView_Load);

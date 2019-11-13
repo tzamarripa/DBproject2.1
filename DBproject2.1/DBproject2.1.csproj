@@ -137,7 +137,7 @@
     <Compile Include="ManageMembersView.Designer.cs">
       <DependentUpon>ManageMembersView.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemberDetails.cs" />
+    <Compile Include="Models.cs" />
     <Compile Include="MemberLoginView.cs">
       <SubType>Form</SubType>
     </Compile>

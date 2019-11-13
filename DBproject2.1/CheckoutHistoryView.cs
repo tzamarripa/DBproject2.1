@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,46 +30,94 @@ namespace DBproject2._1
 
             history.Columns.Add("Checkout Date");
             history.Columns.Add("Title");
-            history.Columns.Add("Author");
+            history.Columns.Add("Author(s)");
             history.Columns.Add("ISBN");
             history.Columns.Add("Returned Date");
 
             gridCheckouts.DataSource = history;
 
-            LoadFromDB();
+            var records = LoadFromDB();
+
+            foreach(var rec in records)
+            {
+                Info r = (Info)rec;
+                history.Rows.Add(r.CheckoutDate, r.Title, r.AuthorNames, r.ISBN, r.ReturnedDate);
+            }
         }
 
-        private void LoadFromDB()
+        private ICollection LoadFromDB()
         {
             var cmd = DbConnection.CreateCommand();
-            cmd.CommandText = "select c.CheckoutDate, b.Title, b.Author_Fname, b.Author_Lname, b.ISBN, ci.ReturnedDate " +
+            cmd.CommandText = "select b.ISBN, c.CheckoutDate, b.Title, ci.ReturnedDate, a.Fname, a.Minit, a.Lname " +
                                 "from CHECKOUT c " +
                                 "join CHECKOUT_ITEM ci on ci.CheckoutID = c.CheckoutID " +
                                 "join INVENTORY i on i.Barcode = ci.InventoryID " +
                                 "join BOOK b on b.ISBN = i.BookID " +
+                                "join BOOK_AUTHOR ba on ba.BookID = b.ISBN " +
+                                "join AUTHOR a on a.ID = ba.AuthorID " +
                                 "where c.MemberID = @memberId " +
                                 "order by c.CheckoutDate desc";
             cmd.Parameters.AddWithValue("memberId", MemberDetails.MemberId);
 
+            Hashtable t = new Hashtable();
+
             using (var reader = cmd.ExecuteReader())
             {
-                while (reader.Read())
+                while(reader.Read())
                 {
+                    var ISBN = reader.GetString(0);
 
-                    history.Rows.Add(
-                        reader.GetDateTime(0).ToString("dd/MM/yyyy"),
-                        reader.GetString(1),
-                        string.Format("{1}, {0}", reader.GetString(2), reader.GetString(3)),
-                        reader.GetString(4),
-                        (reader.IsDBNull(5) ? "" : reader.GetDateTime(5).ToString("dd/MM/yyyy"))
-                    );
+                    var item = (Info)t[ISBN];
+
+                    if (item == null)
+                    {
+                        item = new Info()
+                        {
+                            ISBN = ISBN,
+                            CheckoutDate = reader.GetDateTime(1).ToString("dd/MM/yyyy"),
+                            Title = reader.GetString(2),
+                            ReturnedDate = reader.IsDBNull(3) ? "" : reader.GetDateTime(3).ToString("dd/MM/yyyy")
+                        };
+
+                        t[ISBN] = item;
+                    }
+
+                    item.Authors.Add(new Author()
+                    {
+                        Firstname = reader.GetString(4),
+                        MiddleInitial = (reader.IsDBNull(5) ? null : reader.GetString(5)),
+                        Lastname = reader.GetString(6)
+                    });
                 }
             }
+
+            return t.Values;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private class Info
+        {
+            internal string ISBN { get; set; }
+            internal string CheckoutDate { get; set; }
+            internal string Title { get; set; }
+            internal string ReturnedDate { get; set; }
+            internal string AuthorNames
+            {
+                get
+                {
+                    return string.Join(", ", Authors.Select(a => a.FriendlyName));
+                }
+            }
+            internal List<Author> Authors { get; set; }
+
+            public Info()
+            {
+                Authors = new List<Author>(2);
+            }
         }
     }
 }

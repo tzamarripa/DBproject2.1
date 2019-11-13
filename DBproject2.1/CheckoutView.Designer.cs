@@ -35,6 +35,13 @@
             this.groupMemberLookup = new System.Windows.Forms.GroupBox();
             this.lblMemberIdError = new System.Windows.Forms.Label();
             this.groupChooseBooks = new System.Windows.Forms.GroupBox();
+            this.groupReview = new System.Windows.Forms.GroupBox();
+            this.gridReview = new System.Windows.Forms.DataGridView();
+            this.lblDueDate = new System.Windows.Forms.Label();
+            this.lblCheckoutReview = new System.Windows.Forms.Label();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnEditSelection = new System.Windows.Forms.Button();
+            this.btnCancelCheckout = new System.Windows.Forms.Button();
             this.btnRemoveSelected = new System.Windows.Forms.Button();
             this.gridSelections = new System.Windows.Forms.DataGridView();
             this.lblBarcodeError = new System.Windows.Forms.Label();
@@ -44,18 +51,11 @@
             this.btnAddBarcode = new System.Windows.Forms.Button();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.lblBarcode = new System.Windows.Forms.Label();
-            this.groupReview = new System.Windows.Forms.GroupBox();
-            this.gridReview = new System.Windows.Forms.DataGridView();
-            this.lblDueDate = new System.Windows.Forms.Label();
-            this.lblCheckoutReview = new System.Windows.Forms.Label();
-            this.btnConfirm = new System.Windows.Forms.Button();
-            this.btnEditSelection = new System.Windows.Forms.Button();
-            this.btnCancelCheckout = new System.Windows.Forms.Button();
             this.groupMemberLookup.SuspendLayout();
             this.groupChooseBooks.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSelections)).BeginInit();
             this.groupReview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridReview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSelections)).BeginInit();
             this.SuspendLayout();
             // 
             // checkoutlabel
@@ -124,7 +124,6 @@
             // 
             // groupChooseBooks
             // 
-            this.groupChooseBooks.Controls.Add(this.groupReview);
             this.groupChooseBooks.Controls.Add(this.btnRemoveSelected);
             this.groupChooseBooks.Controls.Add(this.gridSelections);
             this.groupChooseBooks.Controls.Add(this.lblBarcodeError);
@@ -140,6 +139,91 @@
             this.groupChooseBooks.TabIndex = 5;
             this.groupChooseBooks.TabStop = false;
             this.groupChooseBooks.Visible = false;
+            // 
+            // groupReview
+            // 
+            this.groupReview.Controls.Add(this.gridReview);
+            this.groupReview.Controls.Add(this.lblDueDate);
+            this.groupReview.Controls.Add(this.lblCheckoutReview);
+            this.groupReview.Controls.Add(this.btnConfirm);
+            this.groupReview.Controls.Add(this.btnEditSelection);
+            this.groupReview.Controls.Add(this.btnCancelCheckout);
+            this.groupReview.Location = new System.Drawing.Point(51, 91);
+            this.groupReview.Name = "groupReview";
+            this.groupReview.Size = new System.Drawing.Size(947, 445);
+            this.groupReview.TabIndex = 6;
+            this.groupReview.TabStop = false;
+            this.groupReview.Visible = false;
+            // 
+            // gridReview
+            // 
+            this.gridReview.AllowUserToAddRows = false;
+            this.gridReview.AllowUserToDeleteRows = false;
+            this.gridReview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridReview.CausesValidation = false;
+            this.gridReview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridReview.Location = new System.Drawing.Point(6, 76);
+            this.gridReview.MultiSelect = false;
+            this.gridReview.Name = "gridReview";
+            this.gridReview.ReadOnly = true;
+            this.gridReview.RowHeadersWidth = 51;
+            this.gridReview.RowTemplate.Height = 24;
+            this.gridReview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridReview.ShowCellErrors = false;
+            this.gridReview.ShowEditingIcon = false;
+            this.gridReview.ShowRowErrors = false;
+            this.gridReview.Size = new System.Drawing.Size(941, 316);
+            this.gridReview.TabIndex = 5;
+            // 
+            // lblDueDate
+            // 
+            this.lblDueDate.AutoSize = true;
+            this.lblDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDueDate.Location = new System.Drawing.Point(662, 28);
+            this.lblDueDate.Name = "lblDueDate";
+            this.lblDueDate.Size = new System.Drawing.Size(138, 17);
+            this.lblDueDate.TabIndex = 4;
+            this.lblDueDate.Text = "To be returned: XXX";
+            // 
+            // lblCheckoutReview
+            // 
+            this.lblCheckoutReview.AutoSize = true;
+            this.lblCheckoutReview.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCheckoutReview.Location = new System.Drawing.Point(360, 18);
+            this.lblCheckoutReview.Name = "lblCheckoutReview";
+            this.lblCheckoutReview.Size = new System.Drawing.Size(235, 32);
+            this.lblCheckoutReview.TabIndex = 3;
+            this.lblCheckoutReview.Text = "Checkout Review";
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Location = new System.Drawing.Point(560, 399);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(133, 23);
+            this.btnConfirm.TabIndex = 2;
+            this.btnConfirm.Text = "Confirm Checkout";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // btnEditSelection
+            // 
+            this.btnEditSelection.Location = new System.Drawing.Point(430, 398);
+            this.btnEditSelection.Name = "btnEditSelection";
+            this.btnEditSelection.Size = new System.Drawing.Size(117, 23);
+            this.btnEditSelection.TabIndex = 1;
+            this.btnEditSelection.Text = "Edit Selection";
+            this.btnEditSelection.UseVisualStyleBackColor = true;
+            this.btnEditSelection.Click += new System.EventHandler(this.btnEditSelection_Click);
+            // 
+            // btnCancelCheckout
+            // 
+            this.btnCancelCheckout.Location = new System.Drawing.Point(281, 398);
+            this.btnCancelCheckout.Name = "btnCancelCheckout";
+            this.btnCancelCheckout.Size = new System.Drawing.Size(131, 23);
+            this.btnCancelCheckout.TabIndex = 0;
+            this.btnCancelCheckout.Text = "Cancel Checkout";
+            this.btnCancelCheckout.UseVisualStyleBackColor = true;
+            this.btnCancelCheckout.Click += new System.EventHandler(this.btnCancelCheckout_Click);
             // 
             // btnRemoveSelected
             // 
@@ -233,95 +317,13 @@
             this.lblBarcode.TabIndex = 0;
             this.lblBarcode.Text = "Barcode:";
             // 
-            // groupReview
-            // 
-            this.groupReview.Controls.Add(this.gridReview);
-            this.groupReview.Controls.Add(this.lblDueDate);
-            this.groupReview.Controls.Add(this.lblCheckoutReview);
-            this.groupReview.Controls.Add(this.btnConfirm);
-            this.groupReview.Controls.Add(this.btnEditSelection);
-            this.groupReview.Controls.Add(this.btnCancelCheckout);
-            this.groupReview.Location = new System.Drawing.Point(0, 0);
-            this.groupReview.Name = "groupReview";
-            this.groupReview.Size = new System.Drawing.Size(947, 445);
-            this.groupReview.TabIndex = 6;
-            this.groupReview.TabStop = false;
-            this.groupReview.Visible = false;
-            // 
-            // gridReview
-            // 
-            this.gridReview.AllowUserToAddRows = false;
-            this.gridReview.AllowUserToDeleteRows = false;
-            this.gridReview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridReview.CausesValidation = false;
-            this.gridReview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridReview.Location = new System.Drawing.Point(6, 76);
-            this.gridReview.MultiSelect = false;
-            this.gridReview.Name = "gridReview";
-            this.gridReview.ReadOnly = true;
-            this.gridReview.RowHeadersWidth = 51;
-            this.gridReview.RowTemplate.Height = 24;
-            this.gridReview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridReview.ShowCellErrors = false;
-            this.gridReview.ShowEditingIcon = false;
-            this.gridReview.ShowRowErrors = false;
-            this.gridReview.Size = new System.Drawing.Size(941, 316);
-            this.gridReview.TabIndex = 5;
-            // 
-            // lblDueDate
-            // 
-            this.lblDueDate.AutoSize = true;
-            this.lblDueDate.Location = new System.Drawing.Point(408, 32);
-            this.lblDueDate.Name = "lblDueDate";
-            this.lblDueDate.Size = new System.Drawing.Size(0, 17);
-            this.lblDueDate.TabIndex = 4;
-            // 
-            // lblCheckoutReview
-            // 
-            this.lblCheckoutReview.AutoSize = true;
-            this.lblCheckoutReview.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckoutReview.Location = new System.Drawing.Point(366, 22);
-            this.lblCheckoutReview.Name = "lblCheckoutReview";
-            this.lblCheckoutReview.Size = new System.Drawing.Size(235, 32);
-            this.lblCheckoutReview.TabIndex = 3;
-            this.lblCheckoutReview.Text = "Checkout Review";
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.Location = new System.Drawing.Point(560, 399);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(133, 23);
-            this.btnConfirm.TabIndex = 2;
-            this.btnConfirm.Text = "Confirm Checkout";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // btnEditSelection
-            // 
-            this.btnEditSelection.Location = new System.Drawing.Point(430, 398);
-            this.btnEditSelection.Name = "btnEditSelection";
-            this.btnEditSelection.Size = new System.Drawing.Size(117, 23);
-            this.btnEditSelection.TabIndex = 1;
-            this.btnEditSelection.Text = "Edit Selection";
-            this.btnEditSelection.UseVisualStyleBackColor = true;
-            this.btnEditSelection.Click += new System.EventHandler(this.btnEditSelection_Click);
-            // 
-            // btnCancelCheckout
-            // 
-            this.btnCancelCheckout.Location = new System.Drawing.Point(281, 398);
-            this.btnCancelCheckout.Name = "btnCancelCheckout";
-            this.btnCancelCheckout.Size = new System.Drawing.Size(131, 23);
-            this.btnCancelCheckout.TabIndex = 0;
-            this.btnCancelCheckout.Text = "Cancel Checkout";
-            this.btnCancelCheckout.UseVisualStyleBackColor = true;
-            this.btnCancelCheckout.Click += new System.EventHandler(this.btnCancelCheckout_Click);
-            // 
             // CheckoutView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.groupReview);
             this.Controls.Add(this.groupChooseBooks);
             this.Controls.Add(this.groupMemberLookup);
             this.Controls.Add(this.checkoutlabel);
@@ -333,10 +335,10 @@
             this.groupMemberLookup.PerformLayout();
             this.groupChooseBooks.ResumeLayout(false);
             this.groupChooseBooks.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridSelections)).EndInit();
             this.groupReview.ResumeLayout(false);
             this.groupReview.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridReview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSelections)).EndInit();
             this.ResumeLayout(false);
 
         }

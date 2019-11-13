@@ -131,8 +131,8 @@ namespace DBproject2._1
         private void HideAllGroups()
         {
             groupMemberLookup.Hide();
-            groupReview.Hide();
             groupChooseBooks.Hide();
+            groupReview.Hide();
         }
 
         private void ResetBookSelection()
@@ -243,8 +243,7 @@ namespace DBproject2._1
         private CheckoutItem FindByBarcode(string barcode)
         {
             var cmd = DbConnection.CreateCommand();
-            //cmd.CommandText = "select ISBN, Title, Author_Fname, Author_Lname from BOOK join INVENTORY on ISBN = BookID where barcode = @barcode";
-            cmd.CommandText = "select b.ISBN, b.Title, a.Fname, a.Minit, a.Lname "+
+            cmd.CommandText = "select b.ISBN, b.Title, a.ID, a.Fname, a.Minit, a.Lname "+
                                 "from BOOK b " +
                                 "join INVENTORY i on i.BookID = b.ISBN " +
                                 "join BOOK_AUTHOR ba on ba.BookID = b.ISBN " +
@@ -276,9 +275,10 @@ namespace DBproject2._1
 
                     item.Authors.Add(new Author()
                     {
-                        Firstname = reader.GetString(2),
-                        MiddleInitial = (reader.IsDBNull(3) ? null : reader.GetString(3)),
-                        Lastname = reader.GetString(4)
+                        ID = reader.GetInt32(2),
+                        Firstname = reader.GetString(3),
+                        MiddleInitial = (reader.IsDBNull(4) ? null : reader.GetString(4)),
+                        Lastname = reader.GetString(5)
                     });
                 }
             }
@@ -385,20 +385,7 @@ namespace DBproject2._1
             internal string Title { get; set; }
             internal string AuthorNames { get
                 {
-                    List<string> names = new List<string>(Authors.Count);
-
-                    foreach(var a in Authors)
-                    {
-                        if(a.MiddleInitial == null || a.MiddleInitial.Length == 0)
-                        {
-                            names.Add(string.Format("{0} {1}", a.Firstname, a.Lastname));
-                        } else
-                        {
-                            names.Add(string.Format("{0} {1}. {2}", a.Firstname, a.MiddleInitial, a.Lastname));
-                        }
-                    }
-
-                    return string.Join(", ", names);
+                    return string.Join(", ", Authors.Select(a => a.FriendlyName));
                 }
             }
             internal string Barcode { get; set; }
@@ -425,13 +412,6 @@ namespace DBproject2._1
                 Firstname = firstname;
                 Lastname = lastname;
             }
-        }
-
-        class Author
-        {
-            internal string Firstname { get; set; }
-            internal string MiddleInitial { get; set; }
-            internal string Lastname { get; set; }
         }
 
         class CheckoutInfo
