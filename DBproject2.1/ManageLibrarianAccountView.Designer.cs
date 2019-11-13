@@ -53,9 +53,9 @@
             this.txtFirstname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupPassword = new System.Windows.Forms.GroupBox();
-            this.checkBoxChangePassword = new System.Windows.Forms.CheckBox();
             this.txtConfirm = new System.Windows.Forms.TextBox();
             this.labelConfirm = new System.Windows.Forms.Label();
+            this.checkBoxChangePassword = new System.Windows.Forms.CheckBox();
             this.errorConfirm = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorZipcode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorState)).BeginInit();
@@ -98,7 +98,6 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Enabled = false;
             this.txtPassword.Location = new System.Drawing.Point(84, 51);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
@@ -109,7 +108,6 @@
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Enabled = false;
             this.labelPassword.Location = new System.Drawing.Point(7, 54);
             this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword.Name = "labelPassword";
@@ -267,20 +265,8 @@
             this.groupPassword.TabStop = false;
             this.groupPassword.Text = "Change Password";
             // 
-            // checkBoxChangePassword
-            // 
-            this.checkBoxChangePassword.AutoSize = true;
-            this.checkBoxChangePassword.Location = new System.Drawing.Point(6, 21);
-            this.checkBoxChangePassword.Name = "checkBoxChangePassword";
-            this.checkBoxChangePassword.Size = new System.Drawing.Size(79, 21);
-            this.checkBoxChangePassword.TabIndex = 0;
-            this.checkBoxChangePassword.Text = "Change";
-            this.checkBoxChangePassword.UseVisualStyleBackColor = true;
-            this.checkBoxChangePassword.CheckedChanged += new System.EventHandler(this.checkBoxChangePassword_CheckedChanged);
-            // 
             // txtConfirm
             // 
-            this.txtConfirm.Enabled = false;
             this.txtConfirm.Location = new System.Drawing.Point(84, 81);
             this.txtConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.txtConfirm.Name = "txtConfirm";
@@ -291,13 +277,23 @@
             // labelConfirm
             // 
             this.labelConfirm.AutoSize = true;
-            this.labelConfirm.Enabled = false;
             this.labelConfirm.Location = new System.Drawing.Point(7, 81);
             this.labelConfirm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelConfirm.Name = "labelConfirm";
             this.labelConfirm.Size = new System.Drawing.Size(56, 17);
             this.labelConfirm.TabIndex = 41;
             this.labelConfirm.Text = "Confirm";
+            // 
+            // checkBoxChangePassword
+            // 
+            this.checkBoxChangePassword.AutoSize = true;
+            this.checkBoxChangePassword.Location = new System.Drawing.Point(6, 21);
+            this.checkBoxChangePassword.Name = "checkBoxChangePassword";
+            this.checkBoxChangePassword.Size = new System.Drawing.Size(79, 21);
+            this.checkBoxChangePassword.TabIndex = 0;
+            this.checkBoxChangePassword.Text = "Change";
+            this.checkBoxChangePassword.UseVisualStyleBackColor = true;
+            this.checkBoxChangePassword.CheckedChanged += new System.EventHandler(this.checkBoxChangePassword_CheckedChanged);
             // 
             // errorConfirm
             // 
@@ -323,7 +319,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFirstname);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ManageLibrarianAccountView";
             this.Text = "Manage Account";
             this.Load += new System.EventHandler(this.ManageLibrarianAccountView_Load);

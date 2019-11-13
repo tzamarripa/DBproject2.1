@@ -26,7 +26,7 @@ namespace DBproject2._1.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Richard\\Downloads\\Li" +
-            "brary.mdf;Integrated Security=True;Connect Timeout=5")]
+            "braryDB-11Nov2019\\Library.mdf;Integrated Security=True;Connect Timeout=5")]
         public string DB_CONNECTION {
             get {
                 return ((string)(this["DB_CONNECTION"]));
@@ -66,6 +66,15 @@ namespace DBproject2._1.Properties {
         public int DEFAULT_RENEWAL_DAYS {
             get {
                 return ((int)(this["DEFAULT_RENEWAL_DAYS"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int MEMBER_NAME_SEARCH_MIN_CHARS {
+            get {
+                return ((int)(this["MEMBER_NAME_SEARCH_MIN_CHARS"]));
             }
         }
     }

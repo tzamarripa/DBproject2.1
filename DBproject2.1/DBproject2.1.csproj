@@ -100,6 +100,12 @@
     <Compile Include="CurrentCheckoutsView.Designer.cs">
       <DependentUpon>CurrentCheckoutsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditMemberView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditMemberView.Designer.cs">
+      <DependentUpon>EditMemberView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CurrentCheckoutsView.resx">
       <DependentUpon>CurrentCheckoutsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditMemberView.resx">
+      <DependentUpon>EditMemberView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

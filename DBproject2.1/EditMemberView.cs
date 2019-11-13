@@ -11,26 +11,18 @@ using System.Windows.Forms;
 
 namespace DBproject2._1
 {
-    public partial class ManageLibrarianAccountView : Form
+    public partial class EditMemberView : Form
     {
+        private string memberId;
         public SqlConnection DbConnection { get; set; }
 
-        public LibrarianAccount Account { get; set; }
-
-        public ManageLibrarianAccountView()
+        public EditMemberView(string memberId)
         {
+            this.memberId = memberId;
             InitializeComponent();
         }
 
-        public ManageLibrarianAccountView(SqlConnection connection, LibrarianAccount account)
-        {
-            DbConnection = connection;
-            Account = account;
-
-            InitializeComponent();
-        }
-
-        private void ManageLibrarianAccountView_Load(object sender, EventArgs e)
+        private void EditMemberView_Load(object sender, EventArgs e)
         {
             LoadFromDB();
             TogglePasswordChangeEnabled(false);
@@ -39,8 +31,8 @@ namespace DBproject2._1
         private void LoadFromDB()
         {
             var cmd = DbConnection.CreateCommand();
-            cmd.CommandText = "select fname, lname, street, city, state, zipcode from LIBRARIAN where ID = @id";
-            cmd.Parameters.AddWithValue("id", Account.ID);
+            cmd.CommandText = "select fname, lname, dob, street, city, state, zipcode from MEMBER where memberid = @id";
+            cmd.Parameters.AddWithValue("id", memberId);
 
             using (var reader = cmd.ExecuteReader())
             {
@@ -48,21 +40,12 @@ namespace DBproject2._1
                 {
                     txtFirstname.Text = reader.GetString(0);
                     txtLastname.Text = reader.GetString(1);
-                    txtStreet.Text = reader.GetString(2);
-                    txtCity.Text = reader.GetString(3);
-                    txtState.Text = reader.GetString(4);
-                    txtZipcode.Text = reader.GetString(5);
+                    dateDob.Value = reader.GetDateTime(2);
+                    txtStreet.Text = reader.GetString(3);
+                    txtCity.Text = reader.GetString(4);
+                    txtState.Text = reader.GetString(5);
+                    txtZipcode.Text = reader.GetString(6);
                 }
-            }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Are you sure you want to cancel?", "Verify cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                Close();
             }
         }
 
@@ -77,8 +60,6 @@ namespace DBproject2._1
                 if (SaveToDB())
                 {
                     MessageBox.Show("Record updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    PopulateAccountWithUpdatedInfo();
-                    DialogResult = DialogResult.OK;
                     Close();
                 }
                 else
@@ -88,45 +69,11 @@ namespace DBproject2._1
             }
         }
 
-        private void PopulateAccountWithUpdatedInfo()
-        {
-            //simplified as the only the name is used within the parent
-            Account.Firstname = txtFirstname.Text;
-            Account.Lastname = txtFirstname.Text;
-        }
-
-        private bool SaveToDB()
-        {
-            var cmd = DbConnection.CreateCommand();
-
-            cmd.CommandText = "update LIBRARIAN set fname = @firstname, lname = @lastname, street = @street, " +
-                                "city = @city, state = @state, zipcode = @zipcode ";
-            
-            if(checkBoxChangePassword.Checked)
-            {
-                cmd.CommandText += ", PasswordHash = @PasswordHash ";
-                cmd.Parameters.AddWithValue("PasswordHash", PasswordHasher.ToHash(txtPassword.Text));
-            }
-
-            cmd.Parameters.AddWithValue("firstname", txtFirstname.Text);
-            cmd.Parameters.AddWithValue("lastname", txtLastname.Text);
-            cmd.Parameters.AddWithValue("street", txtStreet.Text);
-            cmd.Parameters.AddWithValue("city", txtCity.Text);
-            cmd.Parameters.AddWithValue("state", txtState.Text);
-            cmd.Parameters.AddWithValue("zipcode", txtZipcode.Text);
-
-            cmd.CommandText += "where ID = @id";
-            cmd.Parameters.AddWithValue("id", Account.ID);
-
-            int rows = cmd.ExecuteNonQuery();
-
-            return rows == 1;
-        }
-
         private void ClearErrors()
         {
             errorFirstname.SetError(txtFirstname, "");
             errorLastname.SetError(txtLastname, "");
+            errorDOB.SetError(dateDob, "");
             errorStreet.SetError(txtStreet, "");
             errorCity.SetError(txtCity, "");
             errorState.SetError(txtState, "");
@@ -146,6 +93,11 @@ namespace DBproject2._1
             if (txtLastname.TextLength == 0)
             {
                 errorLastname.SetError(txtLastname, "value required");
+                invalid = true;
+            }
+            if (dateDob.Value.Date >= DateTime.Now.Date)
+            {
+                errorDOB.SetError(dateDob, "must be in the past");
                 invalid = true;
             }
             if (txtStreet.TextLength == 0)
@@ -189,13 +141,53 @@ namespace DBproject2._1
                     invalid = true;
                 }
 
-                if(txtConfirm.TextLength > 0 && txtConfirm.TextLength > 0 && !txtPassword.Text.Equals(txtConfirm.Text)) {
+                if (txtConfirm.TextLength > 0 && txtConfirm.TextLength > 0 && !txtPassword.Text.Equals(txtConfirm.Text))
+                {
                     errorConfirm.SetError(txtConfirm, "values do not match");
                     invalid = true;
                 }
             }
 
             return invalid;
+        }
+
+        private bool SaveToDB()
+        {
+            var cmd = DbConnection.CreateCommand();
+
+            cmd.CommandText = "update MEMBER set fname = @firstname, lname = @lastname, street = @street, " +
+                                "city = @city, state = @state, zipcode = @zipcode, dob = @dob ";
+
+            if (checkBoxChangePassword.Checked)
+            {
+                cmd.CommandText += ", PasswordHash = @PasswordHash ";
+                cmd.Parameters.AddWithValue("PasswordHash", PasswordHasher.ToHash(txtPassword.Text));
+            }
+
+            cmd.Parameters.AddWithValue("firstname", txtFirstname.Text);
+            cmd.Parameters.AddWithValue("lastname", txtLastname.Text);
+            cmd.Parameters.AddWithValue("street", txtStreet.Text);
+            cmd.Parameters.AddWithValue("city", txtCity.Text);
+            cmd.Parameters.AddWithValue("state", txtState.Text);
+            cmd.Parameters.AddWithValue("zipcode", txtZipcode.Text);
+            cmd.Parameters.AddWithValue("dob", dateDob.Value);
+
+            cmd.CommandText += "where MemberID = @id";
+            cmd.Parameters.AddWithValue("id", memberId);
+
+            int rows = cmd.ExecuteNonQuery();
+
+            return rows == 1;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Cancel edit?","Cancel confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
         }
 
         private void checkBoxChangePassword_CheckedChanged(object sender, EventArgs e)

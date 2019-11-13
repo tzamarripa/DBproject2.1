@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DB_CONNECTION" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Richard\Downloads\Library.mdf;Integrated Security=True;Connect Timeout=5</Value>
+      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Richard\Downloads\LibraryDB-11Nov2019\Library.mdf;Integrated Security=True;Connect Timeout=5</Value>
     </Setting>
     <Setting Name="DEFAULT_CHECKOUT_DAYS" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">30</Value>
@@ -16,6 +16,9 @@
     </Setting>
     <Setting Name="DEFAULT_RENEWAL_DAYS" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">14</Value>
+    </Setting>
+    <Setting Name="MEMBER_NAME_SEARCH_MIN_CHARS" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3</Value>
     </Setting>
   </Settings>
 </SettingsFile>
