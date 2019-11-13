@@ -41,7 +41,7 @@ namespace DBproject2._1
             foreach(var rec in records)
             {
                 Info r = (Info)rec;
-                history.Rows.Add(r.CheckoutDate, r.Title, r.AuthorNames, r.ISBN, r.ReturnedDate);
+                history.Rows.Add(r.CheckoutDate, r.Title, r.Authors.GetNames(), r.ISBN, r.ReturnedDate);
             }
         }
 
@@ -105,13 +105,6 @@ namespace DBproject2._1
             internal string CheckoutDate { get; set; }
             internal string Title { get; set; }
             internal string ReturnedDate { get; set; }
-            internal string AuthorNames
-            {
-                get
-                {
-                    return string.Join(", ", Authors.Select(a => a.FriendlyName));
-                }
-            }
             internal List<Author> Authors { get; set; }
 
             public Info()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,7 +36,7 @@ namespace DBproject2._1
 
             checkoutTable.Columns.Add("Checkout Date");
             checkoutTable.Columns.Add("Title");
-            checkoutTable.Columns.Add("Author");
+            checkoutTable.Columns.Add("Author(s)");
             checkoutTable.Columns.Add("ISBN");
             checkoutTable.Columns.Add("Due Date");
             checkoutTable.Columns.Add("Renewals");
@@ -81,7 +82,7 @@ namespace DBproject2._1
                 checkoutTable.Rows.Add(
                     c.CheckedoutDate,
                     c.Title,
-                    c.Author,
+                    c.Authors.GetNames(),
                     c.ISBN,
                     c.DueDate,
                     c.RenewalCount
@@ -92,32 +93,59 @@ namespace DBproject2._1
         private void LoadFromDB()
         {
             var cmd = DbConnection.CreateCommand();
-            cmd.CommandText = "select ci.InventoryID, c.CheckoutID, c.CheckoutDate, b.Title, b.Author_Fname, b.Author_Lname, b.ISBN, ci.DueDate, ci.RenewalCount " +
+            cmd.CommandText = "select ci.InventoryID, c.CheckoutID, c.CheckoutDate, b.Title, b.ISBN, ci.DueDate, ci.RenewalCount, " +
+                                "a.Fname, a.Minit, a.Lname " +
                                 "from CHECKOUT c " +
                                 "join CHECKOUT_ITEM ci on ci.CheckoutID = c.CheckoutID " +
                                 "join INVENTORY i on i.Barcode = ci.InventoryID " +
                                 "join BOOK b on b.ISBN = i.BookID " +
+                                "join BOOK_AUTHOR ba on ba.BookID = b.ISBN " +
+                                "join AUTHOR a on a.ID = ba.AuthorID " +
                                 "where c.MemberID = @memberId " +
                                 "order by c.CheckoutDate desc, Title desc";
             cmd.Parameters.AddWithValue("memberId", MemberDetails.MemberId);
+
+            Hashtable recordHash = new Hashtable();
 
             using (var reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    checkoutList.Add(new CheckoutItem()
+                    var InventoryID = reader.GetString(0);
+                    var CheckoutID = reader.GetInt32(1);
+
+                    var key = string.Format("{0}:{1}", InventoryID, CheckoutID);
+
+                    var item = (CheckoutItem)recordHash[key];
+
+                    if(item == null)
                     {
-                        InventoryID = reader.GetString(0),
-                        CheckoutID = reader.GetInt32(1),
-                        CheckedoutDate = reader.GetDateTime(2).ToString(DATE_COLUMN_FORMAT),
-                        Title = reader.GetString(3),
-                        AuthorFirstname = reader.GetString(4),
-                        AuthorLastname = reader.GetString(5),
-                        ISBN = reader.GetString(6),
-                        DueDate = reader.GetDateTime(7).ToString(DATE_COLUMN_FORMAT),
-                        RenewalCount = reader.GetInt32(8)
+                        item = new CheckoutItem()
+                        {
+                            InventoryID = InventoryID,
+                            CheckoutID = CheckoutID,
+                            CheckedoutDate = reader.GetDateTime(2).ToString(DATE_COLUMN_FORMAT),
+                            Title = reader.GetString(3),
+                            ISBN = reader.GetString(4),
+                            DueDate = reader.GetDateTime(5).ToString(DATE_COLUMN_FORMAT),
+                            RenewalCount = reader.GetInt32(6)
+                        };
+
+                        recordHash[key] = item;
+                    }
+
+                    item.Authors.Add(new Author()
+                    {
+                        Firstname = reader.GetString(7),
+                        MiddleInitial = (reader.IsDBNull(8) ? null : reader.GetString(8)),
+                        Lastname = reader.GetString(9)
                     });
                 }
+            }
+
+            foreach(var record in recordHash.Values)
+            {
+                checkoutList.Add((CheckoutItem)record);
             }
         }
 
@@ -181,12 +209,15 @@ namespace DBproject2._1
             internal string InventoryID { get; set; }
             internal string CheckedoutDate { get; set; }
             internal string Title { get; set; }
-            internal string AuthorFirstname { get; set; }
-            internal string AuthorLastname { get; set; }
-            internal string Author { get => string.Format("{0}, {1}", AuthorLastname, AuthorFirstname); }
+            internal List<Author> Authors { get; set; }
             internal string ISBN { get; set; }
             internal string DueDate { get; set; }
             internal int RenewalCount { get; set; }
+
+            public CheckoutItem()
+            {
+                Authors = new List<Author>(2);
+            }
         }
     }
 }
