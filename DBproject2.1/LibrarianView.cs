@@ -24,13 +24,20 @@ namespace DBproject2._1
 
         private void LibrarianView_Load(object sender, EventArgs e)
         {
-            lblWelcome.Text = string.Format("Welcome, {0}", Account.Firstname);
+            SetWelcomeText();
 
             LoadSummaryInfo();
         }
 
-        private void DisplayView(string viewName, bool RequiresAdmin)
+        private void SetWelcomeText()
         {
+            lblWelcome.Text = string.Format("Welcome, {0}", Account.Firstname);
+        }
+
+        private DialogResult DisplayView(string viewName, bool RequiresAdmin)
+        {
+            DialogResult result = DialogResult.None;
+
             if (RequiresAdmin && !Account.IsAdmin)
             {
                 MessageBox.Show("You require admin privileges.", "Cannot continue", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -41,12 +48,14 @@ namespace DBproject2._1
                 object[] args = { DbConnection, Account };
                 using (Form form = (Form)Activator.CreateInstance(Type.GetType(fullViewName), args))
                 {
-                    form.ShowDialog();
+                    result = form.ShowDialog();
                 }
 
                 //data likely changed, so refresh the summary display
                 LoadSummaryInfo();
             }
+
+            return result;
         }
 
         private void LoadSummaryInfo()
@@ -61,7 +70,12 @@ namespace DBproject2._1
 
         private void manageLibrariansToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DisplayView("ManageLibrarianAccountView", true);
+            var result = DisplayView("ManageLibrarianAccountView", true);
+
+            if(result == DialogResult.OK)
+            {
+                SetWelcomeText();
+            }
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
