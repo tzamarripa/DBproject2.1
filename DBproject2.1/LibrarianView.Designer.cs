@@ -61,6 +61,7 @@
             // 
             // menuStrip
             // 
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.testToolStripMenuItem,
@@ -70,7 +71,8 @@
             this.accountToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(516, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(688, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -80,20 +82,20 @@
             this.registerToolStripMenuItem,
             this.manageToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.fileToolStripMenuItem.Text = "Members";
             // 
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
@@ -103,20 +105,20 @@
             this.addToolStripMenuItem,
             this.removeToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.testToolStripMenuItem.Text = "Inventory";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -126,27 +128,27 @@
             this.currentCheckoutsToolStripMenuItem,
             this.pastDueToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.reportsToolStripMenuItem.Text = "Reports";
             // 
             // currentCheckoutsToolStripMenuItem
             // 
             this.currentCheckoutsToolStripMenuItem.Name = "currentCheckoutsToolStripMenuItem";
-            this.currentCheckoutsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.currentCheckoutsToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.currentCheckoutsToolStripMenuItem.Text = "Current Checkouts";
             this.currentCheckoutsToolStripMenuItem.Click += new System.EventHandler(this.currentCheckoutsToolStripMenuItem_Click);
             // 
             // pastDueToolStripMenuItem
             // 
             this.pastDueToolStripMenuItem.Name = "pastDueToolStripMenuItem";
-            this.pastDueToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.pastDueToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.pastDueToolStripMenuItem.Text = "Past Due";
             this.pastDueToolStripMenuItem.Click += new System.EventHandler(this.pastDueToolStripMenuItem_Click);
             // 
             // returnsToolStripMenuItem
             // 
             this.returnsToolStripMenuItem.Name = "returnsToolStripMenuItem";
-            this.returnsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.returnsToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
             this.returnsToolStripMenuItem.Text = "Returns";
             this.returnsToolStripMenuItem.Click += new System.EventHandler(this.returnsToolStripMenuItem_Click);
             // 
@@ -156,20 +158,20 @@
             this.addToolStripMenuItem1,
             this.editToolStripMenuItem});
             this.librariansToolStripMenuItem.Name = "librariansToolStripMenuItem";
-            this.librariansToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.librariansToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
             this.librariansToolStripMenuItem.Text = "Librarians";
             // 
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(96, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(120, 26);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -179,20 +181,20 @@
             this.mangeToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // mangeToolStripMenuItem
             // 
             this.mangeToolStripMenuItem.Name = "mangeToolStripMenuItem";
-            this.mangeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.mangeToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.mangeToolStripMenuItem.Text = "Manage";
             this.mangeToolStripMenuItem.Click += new System.EventHandler(this.manageLibrariansToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -200,9 +202,10 @@
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(300, 34);
+            this.lblWelcome.Location = new System.Drawing.Point(400, 42);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(197, 25);
+            this.lblWelcome.Size = new System.Drawing.Size(246, 31);
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Welcome, Librarian";
             // 
@@ -210,9 +213,10 @@
             // 
             this.lblPastDue.AutoSize = true;
             this.lblPastDue.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPastDue.Location = new System.Drawing.Point(21, 24);
+            this.lblPastDue.Location = new System.Drawing.Point(31, 87);
+            this.lblPastDue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPastDue.Name = "lblPastDue";
-            this.lblPastDue.Size = new System.Drawing.Size(129, 31);
+            this.lblPastDue.Size = new System.Drawing.Size(160, 39);
             this.lblPastDue.TabIndex = 2;
             this.lblPastDue.Text = "Past due:";
             // 
@@ -220,9 +224,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 66);
+            this.label2.Location = new System.Drawing.Point(31, 31);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(152, 31);
+            this.label2.Size = new System.Drawing.Size(187, 39);
             this.label2.TabIndex = 3;
             this.label2.Text = "Checkouts:";
             // 
@@ -230,9 +235,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(23, 111);
+            this.label3.Location = new System.Drawing.Point(31, 137);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 31);
+            this.label3.Size = new System.Drawing.Size(167, 39);
             this.label3.TabIndex = 4;
             this.label3.Text = "Members:";
             // 
@@ -240,9 +246,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 158);
+            this.label4.Location = new System.Drawing.Point(31, 194);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(141, 31);
+            this.label4.Size = new System.Drawing.Size(176, 39);
             this.label4.TabIndex = 5;
             this.label4.Text = "Librarians:";
             // 
@@ -257,9 +264,11 @@
             this.groupSummary.Controls.Add(this.label3);
             this.groupSummary.Controls.Add(this.label2);
             this.groupSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupSummary.Location = new System.Drawing.Point(94, 76);
+            this.groupSummary.Location = new System.Drawing.Point(125, 94);
+            this.groupSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupSummary.Name = "groupSummary";
-            this.groupSummary.Size = new System.Drawing.Size(266, 203);
+            this.groupSummary.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupSummary.Size = new System.Drawing.Size(355, 250);
             this.groupSummary.TabIndex = 6;
             this.groupSummary.TabStop = false;
             this.groupSummary.Text = "Summary";
@@ -267,9 +276,10 @@
             // linkLibrarians
             // 
             this.linkLibrarians.AutoSize = true;
-            this.linkLibrarians.Location = new System.Drawing.Point(207, 165);
+            this.linkLibrarians.Location = new System.Drawing.Point(276, 203);
+            this.linkLibrarians.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLibrarians.Name = "linkLibrarians";
-            this.linkLibrarians.Size = new System.Drawing.Size(20, 24);
+            this.linkLibrarians.Size = new System.Drawing.Size(26, 29);
             this.linkLibrarians.TabIndex = 9;
             this.linkLibrarians.TabStop = true;
             this.linkLibrarians.Text = "0";
@@ -278,9 +288,10 @@
             // linkMembers
             // 
             this.linkMembers.AutoSize = true;
-            this.linkMembers.Location = new System.Drawing.Point(207, 118);
+            this.linkMembers.Location = new System.Drawing.Point(276, 146);
+            this.linkMembers.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkMembers.Name = "linkMembers";
-            this.linkMembers.Size = new System.Drawing.Size(20, 24);
+            this.linkMembers.Size = new System.Drawing.Size(26, 29);
             this.linkMembers.TabIndex = 8;
             this.linkMembers.TabStop = true;
             this.linkMembers.Text = "0";
@@ -289,9 +300,10 @@
             // linkCheckouts
             // 
             this.linkCheckouts.AutoSize = true;
-            this.linkCheckouts.Location = new System.Drawing.Point(207, 73);
+            this.linkCheckouts.Location = new System.Drawing.Point(276, 41);
+            this.linkCheckouts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkCheckouts.Name = "linkCheckouts";
-            this.linkCheckouts.Size = new System.Drawing.Size(20, 24);
+            this.linkCheckouts.Size = new System.Drawing.Size(26, 29);
             this.linkCheckouts.TabIndex = 7;
             this.linkCheckouts.TabStop = true;
             this.linkCheckouts.Text = "0";
@@ -300,9 +312,10 @@
             // linkPastDue
             // 
             this.linkPastDue.AutoSize = true;
-            this.linkPastDue.Location = new System.Drawing.Point(207, 31);
+            this.linkPastDue.Location = new System.Drawing.Point(276, 96);
+            this.linkPastDue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkPastDue.Name = "linkPastDue";
-            this.linkPastDue.Size = new System.Drawing.Size(20, 24);
+            this.linkPastDue.Size = new System.Drawing.Size(26, 29);
             this.linkPastDue.TabIndex = 6;
             this.linkPastDue.TabStop = true;
             this.linkPastDue.Text = "0";
@@ -310,13 +323,14 @@
             // 
             // LibrarianView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 450);
+            this.ClientSize = new System.Drawing.Size(688, 554);
             this.Controls.Add(this.groupSummary);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LibrarianView";
             this.Text = "Librarian View";
             this.Load += new System.EventHandler(this.LibrarianView_Load);

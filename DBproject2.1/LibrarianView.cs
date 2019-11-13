@@ -60,7 +60,19 @@ namespace DBproject2._1
 
         private void LoadSummaryInfo()
         {
-            //throw new NotImplementedException();
+            var cmd = DbConnection.CreateCommand();
+            cmd.CommandText = "select * from ufn_LibrarySummaryInfo()";
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                if(reader.Read())
+                {
+                    linkCheckouts.Text = reader.GetInt32(0).ToString();
+                    linkPastDue.Text = reader.GetInt32(1).ToString();
+                    linkMembers.Text = reader.GetInt32(2).ToString();
+                    linkLibrarians.Text = reader.GetInt32(3).ToString();
+                }
+            }
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
