@@ -28,44 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.gridResults = new System.Windows.Forms.DataGridView();
+            this.lblHeader = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.gridResults)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // gridResults
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(121, 109);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(558, 294);
-            this.dataGridView1.TabIndex = 3;
+            this.gridResults.AllowUserToAddRows = false;
+            this.gridResults.AllowUserToDeleteRows = false;
+            this.gridResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridResults.CausesValidation = false;
+            this.gridResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridResults.Location = new System.Drawing.Point(12, 81);
+            this.gridResults.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridResults.Name = "gridResults";
+            this.gridResults.ReadOnly = true;
+            this.gridResults.RowHeadersWidth = 62;
+            this.gridResults.RowTemplate.Height = 27;
+            this.gridResults.Size = new System.Drawing.Size(1043, 462);
+            this.gridResults.TabIndex = 3;
             // 
-            // label1
+            // lblHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(127, 47);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "PastDue";
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.Font = new System.Drawing.Font("MS UI Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblHeader.Location = new System.Drawing.Point(407, 28);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(247, 33);
+            this.lblHeader.TabIndex = 2;
+            this.lblHeader.Text = "Past Due Report";
             // 
             // PastDueReportView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.gridResults);
+            this.Controls.Add(this.lblHeader);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PastDueReportView";
             this.Text = "Past Due Report";
             this.Load += new System.EventHandler(this.PastDueReportView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,7 +78,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView gridResults;
+        private System.Windows.Forms.Label lblHeader;
     }
 }

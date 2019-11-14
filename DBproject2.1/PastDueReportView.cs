@@ -33,14 +33,23 @@ namespace DBproject2._1
         private void PastDueReportView_Load(object sender, EventArgs e)
         {
             SqlCommand cmd = DbConnection.CreateCommand();
-            cmd.CommandText = "SELECT * FROM CHECKOUT_ITEM WHERE DueDate<@today";
-            cmd.Parameters.AddWithValue("@today", DateTime.Now);
+            cmd.CommandText = "select b.Title, ci.DueDate as 'Due Date', ci.RenewalCount as 'Renewal Count', " +
+                                "ci.RenewedDate as 'Renewed Date', m.MemberID as 'Member ID', m.Fname + ' ' + m.Lname as 'Member Name' " +
+                                "from CHECKOUT c " +
+                                "join checkout_item ci on ci.CheckoutID = c.CheckoutID " +
+                                "join INVENTORY i on i.Barcode = ci.InventoryID " +
+                                "join MEMBER m on m.MemberID = c.MemberID " +
+                                "join BOOK b on b.ISBN = i.BookID " +
+                                "where ci.ReturnedDate is null " +
+                                "and ci.DueDate < @today " +
+                                "order by ci.DueDate, m.MemberID, ci.RenewalCount";
+            cmd.Parameters.AddWithValue("@today", DateTime.Now.Date);
 
             SqlDataReader reader = cmd.ExecuteReader();
             DataTable tempTable = new DataTable();
             tempTable.Load(reader);
 
-            dataGridView1.DataSource = tempTable;
+            gridResults.DataSource = tempTable;
         }
     }
 }
