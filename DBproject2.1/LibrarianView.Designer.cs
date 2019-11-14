@@ -55,6 +55,7 @@
             this.linkMembers = new System.Windows.Forms.LinkLabel();
             this.linkCheckouts = new System.Windows.Forms.LinkLabel();
             this.linkPastDue = new System.Windows.Forms.LinkLabel();
+            this.historicalCheckoutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.groupSummary.SuspendLayout();
             this.SuspendLayout();
@@ -71,7 +72,6 @@
             this.accountToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip.Size = new System.Drawing.Size(688, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
@@ -126,7 +126,8 @@
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.currentCheckoutsToolStripMenuItem,
-            this.pastDueToolStripMenuItem});
+            this.pastDueToolStripMenuItem,
+            this.historicalCheckoutsToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.reportsToolStripMenuItem.Text = "Reports";
@@ -134,14 +135,14 @@
             // currentCheckoutsToolStripMenuItem
             // 
             this.currentCheckoutsToolStripMenuItem.Name = "currentCheckoutsToolStripMenuItem";
-            this.currentCheckoutsToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
+            this.currentCheckoutsToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
             this.currentCheckoutsToolStripMenuItem.Text = "Current Checkouts";
             this.currentCheckoutsToolStripMenuItem.Click += new System.EventHandler(this.currentCheckoutsToolStripMenuItem_Click);
             // 
             // pastDueToolStripMenuItem
             // 
             this.pastDueToolStripMenuItem.Name = "pastDueToolStripMenuItem";
-            this.pastDueToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
+            this.pastDueToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
             this.pastDueToolStripMenuItem.Text = "Past Due";
             this.pastDueToolStripMenuItem.Click += new System.EventHandler(this.pastDueToolStripMenuItem_Click);
             // 
@@ -265,9 +266,9 @@
             this.groupSummary.Controls.Add(this.label2);
             this.groupSummary.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupSummary.Location = new System.Drawing.Point(125, 94);
-            this.groupSummary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupSummary.Margin = new System.Windows.Forms.Padding(4);
             this.groupSummary.Name = "groupSummary";
-            this.groupSummary.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupSummary.Padding = new System.Windows.Forms.Padding(4);
             this.groupSummary.Size = new System.Drawing.Size(355, 250);
             this.groupSummary.TabIndex = 6;
             this.groupSummary.TabStop = false;
@@ -321,6 +322,13 @@
             this.linkPastDue.Text = "0";
             this.linkPastDue.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPastDue_LinkClicked);
             // 
+            // historicalCheckoutsToolStripMenuItem
+            // 
+            this.historicalCheckoutsToolStripMenuItem.Name = "historicalCheckoutsToolStripMenuItem";
+            this.historicalCheckoutsToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.historicalCheckoutsToolStripMenuItem.Text = "Historical Checkouts";
+            this.historicalCheckoutsToolStripMenuItem.Click += new System.EventHandler(this.historicalCheckoutsToolStripMenuItem_Click);
+            // 
             // LibrarianView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -330,7 +338,7 @@
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LibrarianView";
             this.Text = "Librarian View";
             this.Load += new System.EventHandler(this.LibrarianView_Load);
@@ -372,5 +380,6 @@
         private System.Windows.Forms.LinkLabel linkLibrarians;
         private System.Windows.Forms.LinkLabel linkMembers;
         private System.Windows.Forms.LinkLabel linkCheckouts;
+        private System.Windows.Forms.ToolStripMenuItem historicalCheckoutsToolStripMenuItem;
     }
 }

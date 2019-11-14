@@ -125,6 +125,12 @@
     <Compile Include="CheckoutView.Designer.cs">
       <DependentUpon>CheckoutView.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistoricalCheckoutsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistoricalCheckoutsView.Designer.cs">
+      <DependentUpon>HistoricalCheckoutsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="LibrarianAccount.cs" />
     <Compile Include="LibrarianView.cs">
       <SubType>Form</SubType>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CheckoutView.resx">
       <DependentUpon>CheckoutView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoricalCheckoutsView.resx">
+      <DependentUpon>HistoricalCheckoutsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LibrarianView.resx">
       <DependentUpon>LibrarianView.cs</DependentUpon>

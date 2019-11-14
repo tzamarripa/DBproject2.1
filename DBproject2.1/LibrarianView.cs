@@ -153,5 +153,10 @@ namespace DBproject2._1
         {
             editToolStripMenuItem_Click(sender, e);
         }
+
+        private void historicalCheckoutsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DisplayView("HistoricalCheckoutsView", false);
+        }
     }
 }
