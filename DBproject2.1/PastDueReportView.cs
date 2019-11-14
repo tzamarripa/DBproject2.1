@@ -32,7 +32,12 @@ namespace DBproject2._1
 
         private void PastDueReportView_Load(object sender, EventArgs e)
         {
-            SqlCommand cmd = DbConnection.CreateCommand();
+            LoadFromDB();
+        }
+
+        private void LoadFromDB()
+        {
+            var cmd = DbConnection.CreateCommand();
             cmd.CommandText = "select b.Title, ci.DueDate as 'Due Date', ci.RenewalCount as 'Renewal Count', " +
                                 "ci.RenewedDate as 'Renewed Date', m.MemberID as 'Member ID', m.Fname + ' ' + m.Lname as 'Member Name' " +
                                 "from CHECKOUT c " +
@@ -45,11 +50,14 @@ namespace DBproject2._1
                                 "order by ci.DueDate, m.MemberID, ci.RenewalCount";
             cmd.Parameters.AddWithValue("@today", DateTime.Now.Date);
 
-            SqlDataReader reader = cmd.ExecuteReader();
-            DataTable tempTable = new DataTable();
-            tempTable.Load(reader);
+            var dataTable = new DataTable();
 
-            gridResults.DataSource = tempTable;
+            using (var reader = cmd.ExecuteReader())
+            {
+                dataTable.Load(reader);
+            }
+
+            gridResults.DataSource = dataTable;
         }
     }
 }
