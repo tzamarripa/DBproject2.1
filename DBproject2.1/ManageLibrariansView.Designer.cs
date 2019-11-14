@@ -56,9 +56,9 @@
             this.lblCount.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lblCount.Location = new System.Drawing.Point(265, 301);
             this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(56, 19);
+            this.lblCount.Size = new System.Drawing.Size(19, 19);
             this.lblCount.TabIndex = 35;
-            this.lblCount.Text = "count";
+            this.lblCount.Text = "0";
             // 
             // label4
             // 

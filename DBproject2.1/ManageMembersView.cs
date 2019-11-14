@@ -179,7 +179,7 @@ namespace DBproject2._1
         {
             //update count label
             int recordCount = searchResultsTable.Rows.Count;
-            lblCount.Text = recordCount.ToString();
+            groupSearchResults.Text = string.Format("Search results: {0}", recordCount);
 
             if (recordCount == 0)
             {
