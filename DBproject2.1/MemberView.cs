@@ -298,7 +298,7 @@ namespace DBproject2._1
         private void PopulateGroupMemberInfo()
         {
             lblMemberInfoMemberId.Text = memberDetails.MemberId;
-            lblMemberInfoName.Text = string.Format("{0} {1}", memberDetails.FirstName, memberDetails.Lastname);
+            lblMemberInfoName.Text = string.Format("{0} {1}", memberDetails.Firstname, memberDetails.Lastname);
             lblMemberInfoJoinDate.Text = memberDetails.JoinDate.ToString("MMM dd, yyyy");
         }
 

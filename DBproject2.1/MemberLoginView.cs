@@ -101,7 +101,7 @@ namespace DBproject2._1
                     info = new MemberDetails()
                     {
                         MemberId = reader.GetInt32(0).ToString(),
-                        FirstName = reader.GetString(1),
+                        Firstname = reader.GetString(1),
                         Lastname = reader.GetString(2),
                         JoinDate = reader.GetDateTime(3)
                     };

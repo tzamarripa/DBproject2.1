@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.checkoutlabel = new System.Windows.Forms.Label();
             this.lblMemberId = new System.Windows.Forms.Label();
             this.txtMemberId = new System.Windows.Forms.TextBox();
             this.btnMemberLookup = new System.Windows.Forms.Button();
             this.groupMemberLookup = new System.Windows.Forms.GroupBox();
-            this.lblMemberIdError = new System.Windows.Forms.Label();
+            this.btnClearLookup = new System.Windows.Forms.Button();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.groupChooseBooks = new System.Windows.Forms.GroupBox();
             this.groupReview = new System.Windows.Forms.GroupBox();
             this.gridReview = new System.Windows.Forms.DataGridView();
@@ -51,11 +54,16 @@
             this.btnAddBarcode = new System.Windows.Forms.Button();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.lblBarcode = new System.Windows.Forms.Label();
+            this.errorMemberId = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupMemberLookup.SuspendLayout();
             this.groupChooseBooks.SuspendLayout();
             this.groupReview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridReview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSelections)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorMemberId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).BeginInit();
             this.SuspendLayout();
             // 
             // checkoutlabel
@@ -82,16 +90,16 @@
             // txtMemberId
             // 
             this.txtMemberId.AllowDrop = true;
-            this.txtMemberId.Location = new System.Drawing.Point(184, 88);
+            this.txtMemberId.Location = new System.Drawing.Point(167, 88);
             this.txtMemberId.Margin = new System.Windows.Forms.Padding(4);
             this.txtMemberId.Name = "txtMemberId";
             this.txtMemberId.ShortcutsEnabled = false;
             this.txtMemberId.Size = new System.Drawing.Size(255, 22);
-            this.txtMemberId.TabIndex = 2;
+            this.txtMemberId.TabIndex = 1;
             // 
             // btnMemberLookup
             // 
-            this.btnMemberLookup.Location = new System.Drawing.Point(151, 185);
+            this.btnMemberLookup.Location = new System.Drawing.Point(263, 182);
             this.btnMemberLookup.Margin = new System.Windows.Forms.Padding(4);
             this.btnMemberLookup.Name = "btnMemberLookup";
             this.btnMemberLookup.Size = new System.Drawing.Size(159, 42);
@@ -102,7 +110,9 @@
             // 
             // groupMemberLookup
             // 
-            this.groupMemberLookup.Controls.Add(this.lblMemberIdError);
+            this.groupMemberLookup.Controls.Add(this.btnClearLookup);
+            this.groupMemberLookup.Controls.Add(this.txtPassword);
+            this.groupMemberLookup.Controls.Add(this.lblPassword);
             this.groupMemberLookup.Controls.Add(this.txtMemberId);
             this.groupMemberLookup.Controls.Add(this.btnMemberLookup);
             this.groupMemberLookup.Controls.Add(this.lblMemberId);
@@ -112,15 +122,38 @@
             this.groupMemberLookup.TabIndex = 4;
             this.groupMemberLookup.TabStop = false;
             // 
-            // lblMemberIdError
+            // btnClearLookup
             // 
-            this.lblMemberIdError.AutoSize = true;
-            this.lblMemberIdError.ForeColor = System.Drawing.Color.Red;
-            this.lblMemberIdError.Location = new System.Drawing.Point(165, 136);
-            this.lblMemberIdError.Name = "lblMemberIdError";
-            this.lblMemberIdError.Size = new System.Drawing.Size(0, 17);
-            this.lblMemberIdError.TabIndex = 4;
-            this.lblMemberIdError.Visible = false;
+            this.btnClearLookup.Location = new System.Drawing.Point(39, 182);
+            this.btnClearLookup.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClearLookup.Name = "btnClearLookup";
+            this.btnClearLookup.Size = new System.Drawing.Size(159, 42);
+            this.btnClearLookup.TabIndex = 4;
+            this.btnClearLookup.Text = "Clear";
+            this.btnClearLookup.UseVisualStyleBackColor = true;
+            this.btnClearLookup.Click += new System.EventHandler(this.btnClearLookup_Click);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.AllowDrop = true;
+            this.txtPassword.Location = new System.Drawing.Point(167, 134);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.ShortcutsEnabled = false;
+            this.txtPassword.Size = new System.Drawing.Size(255, 22);
+            this.txtPassword.TabIndex = 2;
+            this.txtPassword.UseSystemPasswordChar = true;
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(35, 136);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(88, 20);
+            this.lblPassword.TabIndex = 5;
+            this.lblPassword.Text = "Password:";
             // 
             // groupChooseBooks
             // 
@@ -133,7 +166,7 @@
             this.groupChooseBooks.Controls.Add(this.btnAddBarcode);
             this.groupChooseBooks.Controls.Add(this.txtBarcode);
             this.groupChooseBooks.Controls.Add(this.lblBarcode);
-            this.groupChooseBooks.Location = new System.Drawing.Point(45, 97);
+            this.groupChooseBooks.Location = new System.Drawing.Point(62, 82);
             this.groupChooseBooks.Name = "groupChooseBooks";
             this.groupChooseBooks.Size = new System.Drawing.Size(947, 445);
             this.groupChooseBooks.TabIndex = 5;
@@ -148,7 +181,7 @@
             this.groupReview.Controls.Add(this.btnConfirm);
             this.groupReview.Controls.Add(this.btnEditSelection);
             this.groupReview.Controls.Add(this.btnCancelCheckout);
-            this.groupReview.Location = new System.Drawing.Point(51, 91);
+            this.groupReview.Location = new System.Drawing.Point(59, 82);
             this.groupReview.Name = "groupReview";
             this.groupReview.Size = new System.Drawing.Size(947, 445);
             this.groupReview.TabIndex = 6;
@@ -317,6 +350,14 @@
             this.lblBarcode.TabIndex = 0;
             this.lblBarcode.Text = "Barcode:";
             // 
+            // errorMemberId
+            // 
+            this.errorMemberId.ContainerControl = this;
+            // 
+            // errorPassword
+            // 
+            this.errorPassword.ContainerControl = this;
+            // 
             // CheckoutView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -339,6 +380,8 @@
             this.groupReview.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridReview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSelections)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorMemberId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -350,7 +393,6 @@
         private System.Windows.Forms.TextBox txtMemberId;
         private System.Windows.Forms.Button btnMemberLookup;
         private System.Windows.Forms.GroupBox groupMemberLookup;
-        private System.Windows.Forms.Label lblMemberIdError;
         private System.Windows.Forms.GroupBox groupChooseBooks;
         private System.Windows.Forms.Button btnCancelSelections;
         private System.Windows.Forms.Button btnContinueSelections;
@@ -368,5 +410,11 @@
         private System.Windows.Forms.Button btnEditSelection;
         private System.Windows.Forms.Button btnCancelCheckout;
         private System.Windows.Forms.DataGridView gridReview;
+        private System.Windows.Forms.Button btnClearLookup;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.ErrorProvider errorMemberId;
+        private System.Windows.Forms.ErrorProvider errorPassword;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

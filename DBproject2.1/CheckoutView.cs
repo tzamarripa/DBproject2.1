@@ -52,25 +52,29 @@ namespace DBproject2._1
             btnContinueSelections.Enabled = gridSelections.Rows.Count > 0;
         }
 
+        private void btnClearLookup_Click(object sender, EventArgs e)
+        {
+            txtMemberId.Text = "";
+            txtPassword.Text = "";
+
+            txtMemberId.Focus();
+        }
+
         private void btnMemberLookup_Click(object sender, EventArgs e)
         {
             ClearMemberSearchErrorMessages();
 
-            String memberId = txtMemberId.Text;
-
-            if(!IsNumeric(memberId))
+            if (ValidateLoginInfo())
             {
-                NotifyNonNumericMemberId();
-            } else
-            {
-                MemberInfo memberInfo = FindMemberById(memberId);
+                MemberDetails matchedAccount = SearchForMember();
 
-                if(memberInfo == null)
+                if (matchedAccount == null)
                 {
-                    NotifyMemberNotFound();
-                } else
+                    errorMemberId.SetError(txtMemberId, Properties.Resources.MEMBER_NOT_FOUND);
+                }
+                else
                 {
-                    checkoutInfo.Member = memberInfo;
+                    checkoutInfo.Member = matchedAccount;
                     ResetBookSelection();
 
                     TransitionToBookInput();
@@ -78,46 +82,57 @@ namespace DBproject2._1
             }
         }
 
-        private MemberInfo FindMemberById(string memberId)
+        private bool ValidateLoginInfo()
+        {
+            bool valid = true;
+
+            if(!int.TryParse(txtMemberId.Text, out _))
+            {
+                errorMemberId.SetError(txtMemberId, Properties.Resources.MEMBER_ID_REQUIRED_NUMERIC);
+                valid = false;
+            }
+
+            if(txtPassword.Text.Length == 0)
+            {
+                errorPassword.SetError(txtPassword, "value required");
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        private MemberDetails SearchForMember()
         {
             SqlCommand cmd = DbConnection.CreateCommand();
-            cmd.CommandText = "select MemberID, Fname, Lname from MEMBER where MemberID = @id";
-            cmd.Parameters.AddWithValue("id", memberId);
+            cmd.CommandText = "select MemberID, Fname, Lname, JoinDate from MEMBER where MemberID = @id and PasswordHash = @hash";
+            cmd.Parameters.AddWithValue("id", txtMemberId.Text);
+            cmd.Parameters.AddWithValue("hash", PasswordHasher.ToHash(txtPassword.Text));
 
             using (var reader = cmd.ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    return new MemberInfo(reader.GetInt32(0).ToString(), reader.GetString(1), reader.GetString(2));
+                    return new MemberDetails()
+                    {
+                        MemberId = reader.GetInt32(0).ToString(),
+                        Firstname = reader.GetString(1),
+                        Lastname = reader.GetString(2),
+                        JoinDate = reader.GetDateTime(3)
+                };
                 } else { return null; }
             }
         }
 
         private void ClearMemberSearchErrorMessages()
         {
-            lblMemberIdError.Text = "";
-        }
-
-        private bool IsNumeric(string s)
-        {
-            return int.TryParse(s, out _);
-        }
-
-        private void NotifyNonNumericMemberId()
-        {
-            lblMemberIdError.Text = Properties.Resources.MEMBER_ID_REQUIRED_NUMERIC;
-            lblMemberIdError.Show();
-        }
-
-        private void NotifyMemberNotFound()
-        {
-            lblMemberIdError.Text = Properties.Resources.MEMBER_NOT_FOUND;
-            lblMemberIdError.Show();
+            errorMemberId.SetError(txtMemberId, "");
+            errorPassword.SetError(txtPassword, "");
         }
 
         private void ClearMemberLookup()
         {
-            txtMemberId.Text = "";
+            txtMemberId.ResetText();
+            txtPassword.ResetText();
             ClearMemberSearchErrorMessages();
         }
 
@@ -169,7 +184,7 @@ namespace DBproject2._1
             ClearMemberLookup();
 
             HideAllGroups();
-            
+
             groupMemberLookup.Show();
         }
 
@@ -398,25 +413,9 @@ namespace DBproject2._1
             }
         }
 
-        class MemberInfo
-        {
-            internal string MemberId { get; }
-            internal string Firstname { get; }
-            internal string Lastname { get; }
-
-            public MemberInfo() { }
-
-            public MemberInfo(string memberId, string firstname, string lastname)
-            {
-                MemberId = memberId;
-                Firstname = firstname;
-                Lastname = lastname;
-            }
-        }
-
         class CheckoutInfo
         {
-            internal MemberInfo Member { get; set; }
+            internal MemberDetails Member { get; set; }
 
             internal List<CheckoutItem> Selections { get; }
             internal DataTable SelectedItems { get; }
@@ -450,7 +449,7 @@ namespace DBproject2._1
 
             internal void Reset()
             {
-                Member = new MemberInfo();
+                Member = new MemberDetails();
                 DueDate = DateTime.Now;
 
                 Selections.Clear();
