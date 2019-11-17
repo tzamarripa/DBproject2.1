@@ -28,208 +28,375 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.isbn = new System.Windows.Forms.TextBox();
-            this.publishdate = new System.Windows.Forms.TextBox();
-            this.authorfname = new System.Windows.Forms.TextBox();
-            this.authorlname = new System.Windows.Forms.TextBox();
-            this.addbook = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.bookid = new System.Windows.Forms.TextBox();
-            this.addinventory = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.lblHeader = new System.Windows.Forms.Label();
+            this.lblTitleInput = new System.Windows.Forms.Label();
+            this.lblPublishDateInput = new System.Windows.Forms.Label();
+            this.lblAuthorFirstname = new System.Windows.Forms.Label();
+            this.lblAuthorLastname = new System.Windows.Forms.Label();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.txtAuthorFirstname = new System.Windows.Forms.TextBox();
+            this.txtAuthorLastname = new System.Windows.Forms.TextBox();
+            this.btnAddBook = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.txtIsbn = new System.Windows.Forms.TextBox();
+            this.lblIsbnInput = new System.Windows.Forms.Label();
+            this.datePublishDate = new System.Windows.Forms.DateTimePicker();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
+            this.lblBarcodeInput = new System.Windows.Forms.Label();
+            this.groupAuthors = new System.Windows.Forms.GroupBox();
+            this.btnAddAuthor = new System.Windows.Forms.Button();
+            this.txtAuthorMiddleInitial = new System.Windows.Forms.TextBox();
+            this.lblAuthorMiddlename = new System.Windows.Forms.Label();
+            this.gridAuthors = new System.Windows.Forms.DataGridView();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.lblQuantity = new System.Windows.Forms.Label();
+            this.groupBook = new System.Windows.Forms.GroupBox();
+            this.groupInventory = new System.Windows.Forms.GroupBox();
+            this.errorTitle = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorIsbn = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorPublishedDate = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorBarcode = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorQuantity = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorMiddleInitial = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorFirstname = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorLastname = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupAuthors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAuthors)).BeginInit();
+            this.groupBook.SuspendLayout();
+            this.groupInventory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorTitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIsbn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPublishedDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorBarcode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorMiddleInitial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorFirstname)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLastname)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(169, 37);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 19);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Add Book";
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblHeader.Location = new System.Drawing.Point(236, 24);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(148, 24);
+            this.lblHeader.TabIndex = 16;
+            this.lblHeader.Text = "Add Inventory";
             // 
-            // label2
+            // lblTitleInput
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(462, 146);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 15);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Book ID";
+            this.lblTitleInput.AutoSize = true;
+            this.lblTitleInput.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblTitleInput.Location = new System.Drawing.Point(130, 31);
+            this.lblTitleInput.Name = "lblTitleInput";
+            this.lblTitleInput.Size = new System.Drawing.Size(45, 19);
+            this.lblTitleInput.TabIndex = 19;
+            this.lblTitleInput.Text = "Title";
             // 
-            // label3
+            // lblPublishDateInput
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(591, 59);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 19);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Add Book";
+            this.lblPublishDateInput.AutoSize = true;
+            this.lblPublishDateInput.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblPublishDateInput.Location = new System.Drawing.Point(64, 108);
+            this.lblPublishDateInput.Name = "lblPublishDateInput";
+            this.lblPublishDateInput.Size = new System.Drawing.Size(111, 19);
+            this.lblPublishDateInput.TabIndex = 20;
+            this.lblPublishDateInput.Text = "Publish Date";
             // 
-            // label4
+            // lblAuthorFirstname
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(107, 137);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 15);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "ISBN";
+            this.lblAuthorFirstname.AutoSize = true;
+            this.lblAuthorFirstname.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblAuthorFirstname.Location = new System.Drawing.Point(86, 24);
+            this.lblAuthorFirstname.Name = "lblAuthorFirstname";
+            this.lblAuthorFirstname.Size = new System.Drawing.Size(89, 19);
+            this.lblAuthorFirstname.TabIndex = 21;
+            this.lblAuthorFirstname.Text = "Firstname";
             // 
-            // label5
+            // lblAuthorLastname
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(51, 187);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 15);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Published Date";
+            this.lblAuthorLastname.AutoSize = true;
+            this.lblAuthorLastname.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblAuthorLastname.Location = new System.Drawing.Point(88, 93);
+            this.lblAuthorLastname.Name = "lblAuthorLastname";
+            this.lblAuthorLastname.Size = new System.Drawing.Size(87, 19);
+            this.lblAuthorLastname.TabIndex = 22;
+            this.lblAuthorLastname.Text = "Lastname";
             // 
-            // label6
+            // txtTitle
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(60, 231);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 15);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Author_fname";
+            this.txtTitle.Location = new System.Drawing.Point(209, 30);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTitle.MaxLength = 100;
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(225, 22);
+            this.txtTitle.TabIndex = 1;
             // 
-            // label7
+            // txtAuthorFirstname
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(60, 276);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 15);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Author_lname";
+            this.txtAuthorFirstname.Location = new System.Drawing.Point(209, 23);
+            this.txtAuthorFirstname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAuthorFirstname.MaxLength = 25;
+            this.txtAuthorFirstname.Name = "txtAuthorFirstname";
+            this.txtAuthorFirstname.Size = new System.Drawing.Size(225, 22);
+            this.txtAuthorFirstname.TabIndex = 16;
             // 
-            // isbn
+            // txtAuthorLastname
             // 
-            this.isbn.Location = new System.Drawing.Point(166, 135);
-            this.isbn.Margin = new System.Windows.Forms.Padding(2);
-            this.isbn.Name = "isbn";
-            this.isbn.Size = new System.Drawing.Size(86, 20);
-            this.isbn.TabIndex = 23;
+            this.txtAuthorLastname.Location = new System.Drawing.Point(209, 93);
+            this.txtAuthorLastname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAuthorLastname.MaxLength = 30;
+            this.txtAuthorLastname.Name = "txtAuthorLastname";
+            this.txtAuthorLastname.Size = new System.Drawing.Size(225, 22);
+            this.txtAuthorLastname.TabIndex = 18;
             // 
-            // publishdate
+            // btnAddBook
             // 
-            this.publishdate.Location = new System.Drawing.Point(166, 188);
-            this.publishdate.Margin = new System.Windows.Forms.Padding(2);
-            this.publishdate.Name = "publishdate";
-            this.publishdate.Size = new System.Drawing.Size(86, 20);
-            this.publishdate.TabIndex = 24;
+            this.btnAddBook.Enabled = false;
+            this.btnAddBook.Location = new System.Drawing.Point(360, 633);
+            this.btnAddBook.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddBook.Name = "btnAddBook";
+            this.btnAddBook.Size = new System.Drawing.Size(83, 44);
+            this.btnAddBook.TabIndex = 20;
+            this.btnAddBook.Text = "Add Book";
+            this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
             // 
-            // authorfname
+            // btnReset
             // 
-            this.authorfname.Location = new System.Drawing.Point(166, 229);
-            this.authorfname.Margin = new System.Windows.Forms.Padding(2);
-            this.authorfname.Name = "authorfname";
-            this.authorfname.Size = new System.Drawing.Size(86, 20);
-            this.authorfname.TabIndex = 25;
+            this.btnReset.Location = new System.Drawing.Point(146, 633);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(83, 44);
+            this.btnReset.TabIndex = 15;
+            this.btnReset.TabStop = false;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // authorlname
+            // txtIsbn
             // 
-            this.authorlname.Location = new System.Drawing.Point(166, 277);
-            this.authorlname.Margin = new System.Windows.Forms.Padding(2);
-            this.authorlname.Name = "authorlname";
-            this.authorlname.Size = new System.Drawing.Size(86, 20);
-            this.authorlname.TabIndex = 26;
+            this.txtIsbn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtIsbn.Location = new System.Drawing.Point(209, 70);
+            this.txtIsbn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtIsbn.MaxLength = 10;
+            this.txtIsbn.Name = "txtIsbn";
+            this.txtIsbn.Size = new System.Drawing.Size(225, 22);
+            this.txtIsbn.TabIndex = 2;
             // 
-            // addbook
+            // lblIsbnInput
             // 
-            this.addbook.Location = new System.Drawing.Point(270, 377);
-            this.addbook.Margin = new System.Windows.Forms.Padding(2);
-            this.addbook.Name = "addbook";
-            this.addbook.Size = new System.Drawing.Size(62, 36);
-            this.addbook.TabIndex = 27;
-            this.addbook.Text = "Add";
-            this.addbook.UseVisualStyleBackColor = true;
-            this.addbook.Click += new System.EventHandler(this.addbook_Click);
+            this.lblIsbnInput.AutoSize = true;
+            this.lblIsbnInput.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblIsbnInput.Location = new System.Drawing.Point(126, 73);
+            this.lblIsbnInput.Name = "lblIsbnInput";
+            this.lblIsbnInput.Size = new System.Drawing.Size(49, 19);
+            this.lblIsbnInput.TabIndex = 32;
+            this.lblIsbnInput.Text = "ISBN";
             // 
-            // button2
+            // datePublishDate
             // 
-            this.button2.Location = new System.Drawing.Point(84, 377);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(62, 36);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.datePublishDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datePublishDate.Location = new System.Drawing.Point(209, 108);
+            this.datePublishDate.Name = "datePublishDate";
+            this.datePublishDate.Size = new System.Drawing.Size(110, 22);
+            this.datePublishDate.TabIndex = 3;
             // 
-            // bookid
+            // txtBarcode
             // 
-            this.bookid.Location = new System.Drawing.Point(588, 146);
-            this.bookid.Margin = new System.Windows.Forms.Padding(2);
-            this.bookid.Name = "bookid";
-            this.bookid.Size = new System.Drawing.Size(86, 20);
-            this.bookid.TabIndex = 29;
+            this.txtBarcode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtBarcode.Location = new System.Drawing.Point(209, 26);
+            this.txtBarcode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBarcode.MaxLength = 10;
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(225, 22);
+            this.txtBarcode.TabIndex = 4;
             // 
-            // addinventory
+            // lblBarcodeInput
             // 
-            this.addinventory.Location = new System.Drawing.Point(649, 377);
-            this.addinventory.Margin = new System.Windows.Forms.Padding(2);
-            this.addinventory.Name = "addinventory";
-            this.addinventory.Size = new System.Drawing.Size(62, 36);
-            this.addinventory.TabIndex = 30;
-            this.addinventory.Text = "Add";
-            this.addinventory.UseVisualStyleBackColor = true;
-            this.addinventory.Click += new System.EventHandler(this.addinventory_Click);
+            this.lblBarcodeInput.AutoSize = true;
+            this.lblBarcodeInput.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblBarcodeInput.Location = new System.Drawing.Point(99, 29);
+            this.lblBarcodeInput.Name = "lblBarcodeInput";
+            this.lblBarcodeInput.Size = new System.Drawing.Size(76, 19);
+            this.lblBarcodeInput.TabIndex = 35;
+            this.lblBarcodeInput.Text = "Barcode";
             // 
-            // button3
+            // groupAuthors
             // 
-            this.button3.Location = new System.Drawing.Point(463, 377);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(62, 36);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "Clear";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.groupAuthors.Controls.Add(this.btnAddAuthor);
+            this.groupAuthors.Controls.Add(this.txtAuthorMiddleInitial);
+            this.groupAuthors.Controls.Add(this.lblAuthorMiddlename);
+            this.groupAuthors.Controls.Add(this.gridAuthors);
+            this.groupAuthors.Controls.Add(this.txtAuthorLastname);
+            this.groupAuthors.Controls.Add(this.lblAuthorFirstname);
+            this.groupAuthors.Controls.Add(this.lblAuthorLastname);
+            this.groupAuthors.Controls.Add(this.txtAuthorFirstname);
+            this.groupAuthors.Location = new System.Drawing.Point(12, 341);
+            this.groupAuthors.Name = "groupAuthors";
+            this.groupAuthors.Size = new System.Drawing.Size(599, 278);
+            this.groupAuthors.TabIndex = 37;
+            this.groupAuthors.TabStop = false;
+            this.groupAuthors.Text = "Authors";
+            // 
+            // btnAddAuthor
+            // 
+            this.btnAddAuthor.Location = new System.Drawing.Point(467, 23);
+            this.btnAddAuthor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddAuthor.Name = "btnAddAuthor";
+            this.btnAddAuthor.Size = new System.Drawing.Size(126, 92);
+            this.btnAddAuthor.TabIndex = 19;
+            this.btnAddAuthor.Text = "Add Author";
+            this.btnAddAuthor.UseVisualStyleBackColor = true;
+            this.btnAddAuthor.Click += new System.EventHandler(this.btnAddAuthor_Click);
+            // 
+            // txtAuthorMiddleInitial
+            // 
+            this.txtAuthorMiddleInitial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtAuthorMiddleInitial.Location = new System.Drawing.Point(209, 58);
+            this.txtAuthorMiddleInitial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAuthorMiddleInitial.MaxLength = 1;
+            this.txtAuthorMiddleInitial.Name = "txtAuthorMiddleInitial";
+            this.txtAuthorMiddleInitial.Size = new System.Drawing.Size(52, 22);
+            this.txtAuthorMiddleInitial.TabIndex = 17;
+            // 
+            // lblAuthorMiddlename
+            // 
+            this.lblAuthorMiddlename.AutoSize = true;
+            this.lblAuthorMiddlename.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblAuthorMiddlename.Location = new System.Drawing.Point(67, 58);
+            this.lblAuthorMiddlename.Name = "lblAuthorMiddlename";
+            this.lblAuthorMiddlename.Size = new System.Drawing.Size(108, 19);
+            this.lblAuthorMiddlename.TabIndex = 27;
+            this.lblAuthorMiddlename.Text = "Middle Initial";
+            // 
+            // gridAuthors
+            // 
+            this.gridAuthors.AllowUserToAddRows = false;
+            this.gridAuthors.AllowUserToDeleteRows = false;
+            this.gridAuthors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridAuthors.CausesValidation = false;
+            this.gridAuthors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridAuthors.Location = new System.Drawing.Point(0, 133);
+            this.gridAuthors.Name = "gridAuthors";
+            this.gridAuthors.ReadOnly = true;
+            this.gridAuthors.RowHeadersWidth = 51;
+            this.gridAuthors.RowTemplate.Height = 24;
+            this.gridAuthors.Size = new System.Drawing.Size(599, 139);
+            this.gridAuthors.TabIndex = 0;
+            this.gridAuthors.TabStop = false;
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(209, 62);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtQuantity.MaxLength = 10;
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(52, 22);
+            this.txtQuantity.TabIndex = 5;
+            // 
+            // lblQuantity
+            // 
+            this.lblQuantity.AutoSize = true;
+            this.lblQuantity.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblQuantity.Location = new System.Drawing.Point(97, 65);
+            this.lblQuantity.Name = "lblQuantity";
+            this.lblQuantity.Size = new System.Drawing.Size(78, 19);
+            this.lblQuantity.TabIndex = 38;
+            this.lblQuantity.Text = "Quantity";
+            // 
+            // groupBook
+            // 
+            this.groupBook.Controls.Add(this.lblTitleInput);
+            this.groupBook.Controls.Add(this.txtTitle);
+            this.groupBook.Controls.Add(this.lblIsbnInput);
+            this.groupBook.Controls.Add(this.txtIsbn);
+            this.groupBook.Controls.Add(this.lblPublishDateInput);
+            this.groupBook.Controls.Add(this.datePublishDate);
+            this.groupBook.Location = new System.Drawing.Point(12, 65);
+            this.groupBook.Name = "groupBook";
+            this.groupBook.Size = new System.Drawing.Size(599, 141);
+            this.groupBook.TabIndex = 40;
+            this.groupBook.TabStop = false;
+            this.groupBook.Text = "Book";
+            // 
+            // groupInventory
+            // 
+            this.groupInventory.Controls.Add(this.lblBarcodeInput);
+            this.groupInventory.Controls.Add(this.txtBarcode);
+            this.groupInventory.Controls.Add(this.txtQuantity);
+            this.groupInventory.Controls.Add(this.lblQuantity);
+            this.groupInventory.Location = new System.Drawing.Point(12, 223);
+            this.groupInventory.Name = "groupInventory";
+            this.groupInventory.Size = new System.Drawing.Size(599, 96);
+            this.groupInventory.TabIndex = 41;
+            this.groupInventory.TabStop = false;
+            this.groupInventory.Text = "Inventory";
+            // 
+            // errorTitle
+            // 
+            this.errorTitle.ContainerControl = this;
+            // 
+            // errorIsbn
+            // 
+            this.errorIsbn.ContainerControl = this;
+            // 
+            // errorPublishedDate
+            // 
+            this.errorPublishedDate.ContainerControl = this;
+            // 
+            // errorBarcode
+            // 
+            this.errorBarcode.ContainerControl = this;
+            // 
+            // errorQuantity
+            // 
+            this.errorQuantity.ContainerControl = this;
+            // 
+            // errorMiddleInitial
+            // 
+            this.errorMiddleInitial.ContainerControl = this;
+            // 
+            // errorFirstname
+            // 
+            this.errorFirstname.ContainerControl = this;
+            // 
+            // errorLastname
+            // 
+            this.errorLastname.ContainerControl = this;
             // 
             // AddInventoryView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.addinventory);
-            this.Controls.Add(this.bookid);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.addbook);
-            this.Controls.Add(this.authorlname);
-            this.Controls.Add(this.authorfname);
-            this.Controls.Add(this.publishdate);
-            this.Controls.Add(this.isbn);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(623, 685);
+            this.Controls.Add(this.groupInventory);
+            this.Controls.Add(this.groupBook);
+            this.Controls.Add(this.groupAuthors);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnAddBook);
+            this.Controls.Add(this.lblHeader);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddInventoryView";
             this.Text = "Add Inventory";
+            this.Load += new System.EventHandler(this.AddInventoryView_Load);
+            this.groupAuthors.ResumeLayout(false);
+            this.groupAuthors.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAuthors)).EndInit();
+            this.groupBook.ResumeLayout(false);
+            this.groupBook.PerformLayout();
+            this.groupInventory.ResumeLayout(false);
+            this.groupInventory.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorTitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIsbn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPublishedDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorBarcode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorMiddleInitial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorFirstname)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLastname)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,21 +404,37 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox isbn;
-        private System.Windows.Forms.TextBox publishdate;
-        private System.Windows.Forms.TextBox authorfname;
-        private System.Windows.Forms.TextBox authorlname;
-        private System.Windows.Forms.Button addbook;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox bookid;
-        private System.Windows.Forms.Button addinventory;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label lblHeader;
+        private System.Windows.Forms.Label lblTitleInput;
+        private System.Windows.Forms.Label lblPublishDateInput;
+        private System.Windows.Forms.Label lblAuthorFirstname;
+        private System.Windows.Forms.Label lblAuthorLastname;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.TextBox txtAuthorFirstname;
+        private System.Windows.Forms.TextBox txtAuthorLastname;
+        private System.Windows.Forms.Button btnAddBook;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.TextBox txtIsbn;
+        private System.Windows.Forms.Label lblIsbnInput;
+        private System.Windows.Forms.DateTimePicker datePublishDate;
+        private System.Windows.Forms.TextBox txtBarcode;
+        private System.Windows.Forms.Label lblBarcodeInput;
+        private System.Windows.Forms.GroupBox groupAuthors;
+        private System.Windows.Forms.TextBox txtAuthorMiddleInitial;
+        private System.Windows.Forms.Label lblAuthorMiddlename;
+        private System.Windows.Forms.DataGridView gridAuthors;
+        private System.Windows.Forms.Button btnAddAuthor;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.Label lblQuantity;
+        private System.Windows.Forms.GroupBox groupBook;
+        private System.Windows.Forms.GroupBox groupInventory;
+        private System.Windows.Forms.ErrorProvider errorTitle;
+        private System.Windows.Forms.ErrorProvider errorIsbn;
+        private System.Windows.Forms.ErrorProvider errorPublishedDate;
+        private System.Windows.Forms.ErrorProvider errorBarcode;
+        private System.Windows.Forms.ErrorProvider errorQuantity;
+        private System.Windows.Forms.ErrorProvider errorMiddleInitial;
+        private System.Windows.Forms.ErrorProvider errorFirstname;
+        private System.Windows.Forms.ErrorProvider errorLastname;
     }
 }
