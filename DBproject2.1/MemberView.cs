@@ -22,7 +22,7 @@ namespace DBproject2._1
         private MemberDetails memberDetails;
 
         //results of a book search
-        private ObservableCollection<SearchResult> searchResults;
+        private ObservableCollection<BookSearchResult> searchResults;
         //reads changes to the book search to display them to the user
         private DataTable searchResultsDataTable;
 
@@ -33,7 +33,7 @@ namespace DBproject2._1
 
         private void MemberView_Load(object sender, EventArgs e)
         {
-            searchResults = new ObservableCollection<SearchResult>();
+            searchResults = new ObservableCollection<BookSearchResult>();
             searchResults.CollectionChanged += OnSearchResultsListChanged;
 
             searchResultsDataTable = new DataTable();
@@ -55,7 +55,7 @@ namespace DBproject2._1
             {
                 foreach (var item in e.NewItems)
                 {
-                    var result = (SearchResult)item;
+                    var result = (BookSearchResult)item;
                     searchResultsDataTable.Rows.Add(result.Title, result.Authors.GetNames(), result.PublishDate, result.ISBN);
                 }
             } else if (e.Action == NotifyCollectionChangedAction.Reset)
@@ -82,7 +82,7 @@ namespace DBproject2._1
         /// For the specified book, populate the Details section and ensure it is visible.
         /// </summary>
         /// <param name="item"></param>
-        private void PopulateDetailsSection(SearchResult item)
+        private void PopulateDetailsSection(BookSearchResult item)
         {
             int checkedOutCount = GetCheckoutCountForItem(item);
             UpdateDetailsText(item, checkedOutCount);
@@ -94,7 +94,7 @@ namespace DBproject2._1
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private int GetCheckoutCountForItem(SearchResult item)
+        private int GetCheckoutCountForItem(BookSearchResult item)
         {
             var cmd = DbConnection.CreateCommand();
             cmd.CommandText = "select count(*) from checkout_item where InventoryID = @barcode and ReturnedDate is null";
@@ -108,7 +108,7 @@ namespace DBproject2._1
         /// </summary>
         /// <param name="item"></param>
         /// <param name="checkedOutCount"></param>
-        private void UpdateDetailsText(SearchResult item, int checkedOutCount)
+        private void UpdateDetailsText(BookSearchResult item, int checkedOutCount)
         {
             txtDetailsTitle.Text = item.Title;
             txtDetailsAuthor.Text = item.Authors.GetNames();
@@ -189,7 +189,7 @@ namespace DBproject2._1
         private bool IsSearchTooShort(SearchRequest req)
         {
             int minChars = Properties.Settings.Default.MEMBER_MIN_BOOK_SEARCH_CHARS;
-            return (req.Title.Length < minChars && req.Author.Length < 3);
+            return (req.Title.Length < minChars && req.Author.Length < minChars);
         }
         /// <summary>
         /// Query the DB for books matching the specified terms. Caller is expected to pre-validate that at least one term is populated.
@@ -235,11 +235,11 @@ namespace DBproject2._1
                     //this PK will be our hash key
                     var ISBN = reader.GetString(0);
 
-                    var item = (SearchResult)resultsHash[ISBN];
+                    var item = (BookSearchResult)resultsHash[ISBN];
 
                     if(item == null)
                     {
-                        item = new SearchResult()
+                        item = new BookSearchResult()
                         {
                             ISBN = ISBN,
                             Title = reader.GetString(1),
@@ -262,7 +262,7 @@ namespace DBproject2._1
             foreach(var item in resultsHash.Values)
             {
                 //this will fire the collection changed event
-                searchResults.Add((SearchResult)item);
+                searchResults.Add((BookSearchResult)item);
             }
         }
 
@@ -342,23 +342,6 @@ namespace DBproject2._1
         {
             internal String Title { get; set; }
             internal String Author { get; set; }
-        }
-        /// <summary>
-        /// Represents a book that matched the user's search term(s).
-        /// </summary>
-        class SearchResult
-        {
-            internal string Title { get; set; }
-            internal string PublishDate { get; set; }
-            internal string ISBN { get; set; }
-            internal string Barcode { get; set; }
-            internal int Quantity { get; set; }
-            internal List<Author> Authors { get; set; }
-
-            public SearchResult()
-            {
-                Authors = new List<Author>(2);
-            }
         }
     }
 }

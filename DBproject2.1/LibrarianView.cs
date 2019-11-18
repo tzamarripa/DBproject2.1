@@ -115,9 +115,9 @@ namespace DBproject2._1
             DisplayView("CurrentCheckoutsReportView", false);
         }
 
-        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DisplayView("RemoveInventoryView", false);
+            DisplayView("ManageInventoryView", false);
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)

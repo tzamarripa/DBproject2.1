@@ -221,6 +221,7 @@ namespace DBproject2._1
             } else if((int.Parse(txtQuantity.Text) <= 0))
             {
                 errorQuantity.SetError(txtQuantity, "must be positive");
+                valid = false;
             }
 
             return valid;

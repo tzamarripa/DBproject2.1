@@ -38,6 +38,7 @@
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.currentCheckoutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pastDueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historicalCheckoutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.librariansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +56,6 @@
             this.linkMembers = new System.Windows.Forms.LinkLabel();
             this.linkCheckouts = new System.Windows.Forms.LinkLabel();
             this.linkPastDue = new System.Windows.Forms.LinkLabel();
-            this.historicalCheckoutsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.groupSummary.SuspendLayout();
             this.SuspendLayout();
@@ -88,14 +88,14 @@
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.manageToolStripMenuItem.Text = "Manage";
             this.manageToolStripMenuItem.Click += new System.EventHandler(this.manageToolStripMenuItem_Click);
             // 
@@ -111,16 +111,16 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
-            this.removeToolStripMenuItem.Text = "Remove";
-            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.removeToolStripMenuItem.Text = "Manage";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
             // 
@@ -146,6 +146,13 @@
             this.pastDueToolStripMenuItem.Text = "Past Due";
             this.pastDueToolStripMenuItem.Click += new System.EventHandler(this.pastDueToolStripMenuItem_Click);
             // 
+            // historicalCheckoutsToolStripMenuItem
+            // 
+            this.historicalCheckoutsToolStripMenuItem.Name = "historicalCheckoutsToolStripMenuItem";
+            this.historicalCheckoutsToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.historicalCheckoutsToolStripMenuItem.Text = "Historical Checkouts";
+            this.historicalCheckoutsToolStripMenuItem.Click += new System.EventHandler(this.historicalCheckoutsToolStripMenuItem_Click);
+            // 
             // returnsToolStripMenuItem
             // 
             this.returnsToolStripMenuItem.Name = "returnsToolStripMenuItem";
@@ -165,14 +172,14 @@
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(120, 26);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -188,14 +195,14 @@
             // mangeToolStripMenuItem
             // 
             this.mangeToolStripMenuItem.Name = "mangeToolStripMenuItem";
-            this.mangeToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.mangeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.mangeToolStripMenuItem.Text = "Manage";
             this.mangeToolStripMenuItem.Click += new System.EventHandler(this.manageLibrariansToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -321,13 +328,6 @@
             this.linkPastDue.TabStop = true;
             this.linkPastDue.Text = "0";
             this.linkPastDue.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPastDue_LinkClicked);
-            // 
-            // historicalCheckoutsToolStripMenuItem
-            // 
-            this.historicalCheckoutsToolStripMenuItem.Name = "historicalCheckoutsToolStripMenuItem";
-            this.historicalCheckoutsToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
-            this.historicalCheckoutsToolStripMenuItem.Text = "Historical Checkouts";
-            this.historicalCheckoutsToolStripMenuItem.Click += new System.EventHandler(this.historicalCheckoutsToolStripMenuItem_Click);
             // 
             // LibrarianView
             // 
