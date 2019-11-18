@@ -51,6 +51,8 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblHeader = new System.Windows.Forms.Label();
+            this.lblEnteredBy = new System.Windows.Forms.Label();
+            this.txtLibrarian = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorBarcode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPublishedDate)).BeginInit();
@@ -88,7 +90,7 @@
             this.groupInventory.Controls.Add(this.txtBarcode);
             this.groupInventory.Controls.Add(this.txtQuantity);
             this.groupInventory.Controls.Add(this.lblQuantity);
-            this.groupInventory.Location = new System.Drawing.Point(34, 209);
+            this.groupInventory.Location = new System.Drawing.Point(34, 256);
             this.groupInventory.Name = "groupInventory";
             this.groupInventory.Size = new System.Drawing.Size(599, 96);
             this.groupInventory.TabIndex = 47;
@@ -136,6 +138,8 @@
             // 
             // groupBook
             // 
+            this.groupBook.Controls.Add(this.lblEnteredBy);
+            this.groupBook.Controls.Add(this.txtLibrarian);
             this.groupBook.Controls.Add(this.lblTitleInput);
             this.groupBook.Controls.Add(this.txtTitle);
             this.groupBook.Controls.Add(this.lblIsbnInput);
@@ -144,7 +148,7 @@
             this.groupBook.Controls.Add(this.datePublishDate);
             this.groupBook.Location = new System.Drawing.Point(34, 51);
             this.groupBook.Name = "groupBook";
-            this.groupBook.Size = new System.Drawing.Size(599, 141);
+            this.groupBook.Size = new System.Drawing.Size(599, 185);
             this.groupBook.TabIndex = 46;
             this.groupBook.TabStop = false;
             this.groupBook.Text = "Book";
@@ -226,7 +230,7 @@
             // groupAuthors
             // 
             this.groupAuthors.Controls.Add(this.gridAuthors);
-            this.groupAuthors.Location = new System.Drawing.Point(34, 327);
+            this.groupAuthors.Location = new System.Drawing.Point(34, 374);
             this.groupAuthors.Name = "groupAuthors";
             this.groupAuthors.Size = new System.Drawing.Size(599, 164);
             this.groupAuthors.TabIndex = 45;
@@ -235,7 +239,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(168, 504);
+            this.btnReset.Location = new System.Drawing.Point(168, 551);
             this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(83, 44);
@@ -247,7 +251,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(382, 504);
+            this.btnUpdate.Location = new System.Drawing.Point(382, 551);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(83, 44);
@@ -266,11 +270,32 @@
             this.lblHeader.TabIndex = 43;
             this.lblHeader.Text = "Edit Inventory";
             // 
+            // lblEnteredBy
+            // 
+            this.lblEnteredBy.AutoSize = true;
+            this.lblEnteredBy.Font = new System.Drawing.Font("MS UI Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblEnteredBy.Location = new System.Drawing.Point(75, 151);
+            this.lblEnteredBy.Name = "lblEnteredBy";
+            this.lblEnteredBy.Size = new System.Drawing.Size(100, 19);
+            this.lblEnteredBy.TabIndex = 34;
+            this.lblEnteredBy.Text = "Entered By";
+            // 
+            // txtLibrarian
+            // 
+            this.txtLibrarian.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtLibrarian.Enabled = false;
+            this.txtLibrarian.Location = new System.Drawing.Point(209, 148);
+            this.txtLibrarian.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtLibrarian.MaxLength = 10;
+            this.txtLibrarian.Name = "txtLibrarian";
+            this.txtLibrarian.Size = new System.Drawing.Size(225, 22);
+            this.txtLibrarian.TabIndex = 33;
+            // 
             // EditInventoryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 558);
+            this.ClientSize = new System.Drawing.Size(670, 614);
             this.Controls.Add(this.groupInventory);
             this.Controls.Add(this.groupBook);
             this.Controls.Add(this.groupAuthors);
@@ -319,5 +344,7 @@
         private System.Windows.Forms.ErrorProvider errorPublishedDate;
         private System.Windows.Forms.ErrorProvider errorIsbn;
         private System.Windows.Forms.ErrorProvider errorTitle;
+        private System.Windows.Forms.Label lblEnteredBy;
+        private System.Windows.Forms.TextBox txtLibrarian;
     }
 }

@@ -56,6 +56,7 @@ namespace DBproject2._1
             txtTitle.Text = Item.Title;
             txtIsbn.Text = Item.ISBN;
             datePublishDate.Value = DateTime.Parse(Item.PublishDate);
+            txtLibrarian.Text = string.Format("{0} {1}", Librarian.Firstname, Librarian.Lastname);
 
             txtBarcode.Text = Item.Barcode;
             txtQuantity.Text = Item.Quantity.ToString();
