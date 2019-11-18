@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -39,7 +40,7 @@ namespace DBproject2._1
             //field to display within the grid
             searchResultsDataTable.Columns.Add("Title");
             searchResultsDataTable.Columns.Add("Author");
-            searchResultsDataTable.Columns.Add("PublishDate");
+            searchResultsDataTable.Columns.Add("Publish Date");
             searchResultsDataTable.Columns.Add("ISBN");
 
             gridSearchResults.DataSource = searchResultsDataTable;
@@ -55,7 +56,7 @@ namespace DBproject2._1
                 foreach (var item in e.NewItems)
                 {
                     var result = (SearchResult)item;
-                    searchResultsDataTable.Rows.Add(result.Title, result.Author, result.PublishDate, result.ISBN);
+                    searchResultsDataTable.Rows.Add(result.Title, result.Authors.GetNames(), result.PublishDate, result.ISBN);
                 }
             } else if (e.Action == NotifyCollectionChangedAction.Reset)
             {
@@ -110,7 +111,7 @@ namespace DBproject2._1
         private void UpdateDetailsText(SearchResult item, int checkedOutCount)
         {
             txtDetailsTitle.Text = item.Title;
-            txtDetailsAuthor.Text = item.Author;
+            txtDetailsAuthor.Text = item.Authors.GetNames();
             txtDetailsIsbn.Text = item.ISBN;
             txtDetailsPublishDate.Text = item.PublishDate;
             txtDetailsAvailable.Text = (item.Quantity - checkedOutCount).ToString();
@@ -198,38 +199,70 @@ namespace DBproject2._1
         {
             var cmd = DbConnection.CreateCommand();
 
-            cmd.CommandText = "select title, author_fname, author_lname, PublishDate, ISBN, i.Barcode, i.Quantity " +
-                                "from book join inventory i on i.BookID = ISBN where 1 = 1 ";
+            cmd.CommandText = "select b.ISBN, b.title, b.PublishDate, i.Barcode, i.Quantity, a.Fname, a.Minit, a.Lname " +
+                                "from book b " +
+                                "join inventory i on i.BookID = b.ISBN " +
+                                "join book_author ba on ba.BookID = i.BookID " +
+                                "join author a on a.id = ba.AuthorID " +
+                                "where b.ISBN in ( " +
+                                "    select distinct(b.ISBN) " +
+                                "    from book b " +
+                                "    join book_author ba on ba.BookID = i.BookID " +
+                                "    join author a on a.id = ba.AuthorID " +
+                                "    where 1 = 1 ";
 
             if(req.Title.Length > 0)
             {
-                cmd.CommandText += " and upper(Title) like @title ";
+                cmd.CommandText += " and upper(b.Title) like @title ";
                 cmd.Parameters.AddWithValue("title", "%" + req.Title.ToUpper() + "%");
             }
 
             if(req.Author.Length > 0)
             {
-                cmd.CommandText += " and(upper(Author_Fname) like @author or upper(Author_Lname) like @author)";
+                cmd.CommandText += " and(upper(a.Fname) like @author or upper(a.Lname) like @author)";
                 cmd.Parameters.AddWithValue("author", "%" + req.Author.ToUpper() + "%");
             }
+
+            //close the IN clause, set ordering
+            cmd.CommandText += ") order by b.Title";
+
+            Hashtable resultsHash = new Hashtable();
 
             using (var reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    var item = new SearchResult()
+                    //this PK will be our hash key
+                    var ISBN = reader.GetString(0);
+
+                    var item = (SearchResult)resultsHash[ISBN];
+
+                    if(item == null)
                     {
-                        Title = reader.GetString(0),
-                        AuthorFirstname = reader.GetString(1),
-                        AuthorLastname = reader.GetString(2),
-                        PublishDate = reader.GetDateTime(3).ToString("MMM dd, yyyy"),
-                        ISBN = reader.GetString(4),
-                        Barcode = reader.GetString(5),
-                        Quantity = reader.GetInt32(6)
-                    };
-                    //this will fire the collection changed event
-                    searchResults.Add(item);
+                        item = new SearchResult()
+                        {
+                            ISBN = ISBN,
+                            Title = reader.GetString(1),
+                            PublishDate = reader.GetDateTime(2).ToString("MMM dd, yyyy"),
+                            Barcode = reader.GetString(3),
+                            Quantity = reader.GetInt32(4),
+                        };
+
+                        resultsHash[ISBN] = item;
+                    }
+
+                    item.Authors.Add(new Author() {
+                        Firstname = reader.GetString(5),
+                        MiddleInitial = (reader.IsDBNull(6) ? null : reader.GetString(6)),
+                        Lastname = reader.GetString(7)
+                    });
                 }
+            }
+
+            foreach(var item in resultsHash.Values)
+            {
+                //this will fire the collection changed event
+                searchResults.Add((SearchResult)item);
             }
         }
 
@@ -316,13 +349,16 @@ namespace DBproject2._1
         class SearchResult
         {
             internal string Title { get; set; }
-            internal string AuthorFirstname { get; set; }
-            internal string AuthorLastname { get; set; }
-            internal string Author { get => string.Format("{0}, {1}", AuthorLastname, AuthorFirstname); }
             internal string PublishDate { get; set; }
             internal string ISBN { get; set; }
             internal string Barcode { get; set; }
             internal int Quantity { get; set; }
+            internal List<Author> Authors { get; set; }
+
+            public SearchResult()
+            {
+                Authors = new List<Author>(2);
+            }
         }
     }
 }
