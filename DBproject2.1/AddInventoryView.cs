@@ -49,8 +49,18 @@ namespace DBproject2._1
             gridAuthors.DataSource = authorTable;
             gridAuthors.RowsAdded += OnAuthorCountChanged;
             gridAuthors.RowsRemoved += OnAuthorCountChanged;
+            gridAuthors.CellDoubleClick += GridAuthors_CellDoubleClick;
 
             SetInitialBookInputFocus();
+        }
+
+        //on double-click of an author, remove the row
+        private void GridAuthors_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                authorList.RemoveAt(e.RowIndex);
+            }
         }
 
         private void OnAuthorListChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -63,6 +73,11 @@ namespace DBproject2._1
                     var result = (Author)item;
                     authorTable.Rows.Add(result.Firstname, result.MiddleInitial, result.Lastname);
                 }
+            }
+            else if(e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                //removal of a single item is fine as the grid is not multiselect
+                authorTable.Rows.RemoveAt(e.OldStartingIndex);
             }
             else if (e.Action == NotifyCollectionChangedAction.Reset)
             {

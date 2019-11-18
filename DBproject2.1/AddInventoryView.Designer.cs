@@ -280,6 +280,7 @@
             this.gridAuthors.CausesValidation = false;
             this.gridAuthors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridAuthors.Location = new System.Drawing.Point(0, 133);
+            this.gridAuthors.MultiSelect = false;
             this.gridAuthors.Name = "gridAuthors";
             this.gridAuthors.ReadOnly = true;
             this.gridAuthors.RowHeadersWidth = 51;
