@@ -335,6 +335,7 @@
             // 
             // txtBarcode
             // 
+            this.txtBarcode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBarcode.Location = new System.Drawing.Point(334, 62);
             this.txtBarcode.MaxLength = 10;
             this.txtBarcode.Name = "txtBarcode";

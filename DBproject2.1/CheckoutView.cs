@@ -222,7 +222,7 @@ namespace DBproject2._1
         {
             lblBarcodeError.Hide();
 
-            string barcode = txtBarcode.Text.Trim().ToUpper();
+            string barcode = txtBarcode.Text.Trim();
 
             if(string.IsNullOrEmpty(barcode))
             {
