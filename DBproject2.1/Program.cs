@@ -22,7 +22,7 @@ namespace DBproject2._1
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.ApplicationExit += Application_ApplicationExit;
-                Form1 form = new Form1();
+                LauncherView form = new LauncherView();
                 form.DbConnection = dbConn;
                 Application.Run(form);
             }

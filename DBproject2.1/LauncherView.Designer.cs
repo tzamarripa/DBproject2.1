@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace DBproject2._1
 {
-    partial class Form1
+    partial class LauncherView
     {
         /// <summary>
         /// Required designer variable.
@@ -100,7 +100,6 @@ namespace DBproject2._1
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Library App";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

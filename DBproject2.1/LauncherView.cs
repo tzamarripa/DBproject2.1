@@ -11,18 +11,13 @@ using System.Windows.Forms;
 
 namespace DBproject2._1
 {
-    public partial class Form1 : Form
+    public partial class LauncherView : Form
     {
         public SqlConnection DbConnection { get; set; }
 
-        public Form1()
+        public LauncherView()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -30,11 +25,9 @@ namespace DBproject2._1
             using (MemberView form = new MemberView())
             {
                 form.DbConnection = DbConnection;
-                this.Hide();
+                
                 form.ShowDialog();
             }
-
-            Close();
         }
 
         private void Checkoutbutton_Click(object sender, EventArgs e)
@@ -42,11 +35,9 @@ namespace DBproject2._1
             using (CheckoutView form = new CheckoutView())
             {
                 form.DbConnection = DbConnection;
-                this.Hide();
+                
                 form.ShowDialog();
             }
-
-            Close();
         }
 
         private void Librarianbutton_Click(object sender, EventArgs e)
@@ -59,7 +50,7 @@ namespace DBproject2._1
             {
                 //ensure it has a DB connection
                 form.DbConnection = DbConnection;
-                this.Hide();
+                
                 //display the login form as a modal
                 var result = form.ShowDialog();
                 //if the user login was successful
@@ -82,8 +73,6 @@ namespace DBproject2._1
                     form.ShowDialog();
                 }
             }
-
-            Close();
         }
     }
 }

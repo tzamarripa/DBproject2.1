@@ -119,11 +119,11 @@
       <DependentUpon>EditMemberView.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="LauncherView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="LauncherView.Designer.cs">
+      <DependentUpon>LauncherView.cs</DependentUpon>
     </Compile>
     <Compile Include="CheckoutView.cs">
       <SubType>Form</SubType>
@@ -233,8 +233,8 @@
     <EmbeddedResource Include="EditMemberView.resx">
       <DependentUpon>EditMemberView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="LauncherView.resx">
+      <DependentUpon>LauncherView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CheckoutView.resx">
       <DependentUpon>CheckoutView.cs</DependentUpon>
