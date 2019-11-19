@@ -102,6 +102,7 @@ namespace DBproject2._1
                                 "join BOOK_AUTHOR ba on ba.BookID = b.ISBN " +
                                 "join AUTHOR a on a.ID = ba.AuthorID " +
                                 "where c.MemberID = @memberId " +
+                                "and ReturnedDate is null " +
                                 "order by c.CheckoutDate desc, Title desc";
             cmd.Parameters.AddWithValue("memberId", MemberDetails.MemberId);
 
